@@ -1,19 +1,24 @@
 class Nexus { 
+
   int startingHP;
   int currentHP;
+  color c;
 
-  Nexus(int newHP) {
-    currentHP = newHP;
+  Nexus() {
+    startingHP = 1000;
+    currentHP = 1000;
+    c = color(102, 204, 255);
   }
 
   void takeDamage(int damage) {
     currentHP -= damage;
   }
-  /*
+
   void dead() {
   }
-  */
+
   void display() {
-     ellipse(600, 360, 10, 10);
+    fill(c);
+    ellipse(600, 360, 50, 50);
   }
 }

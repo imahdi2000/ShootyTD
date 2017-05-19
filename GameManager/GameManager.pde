@@ -1,6 +1,7 @@
-/*
 Player player;
- Nexus nexus;
+
+Nexus nexus;
+/*
  Shop shop;
  ArrayList<Enemy> queuedEnemies;
  ArrayList<Enemy> spawnedEnemies;
@@ -15,15 +16,19 @@ int highscore;
 void setup() {
   // Canvas size
   size(1200, 720);
+  player = new Player();
+  nexus = new Nexus();
 }
 
 void draw() {
   // Background color white
   background(255);
+  noStroke();
+  player.display();
+  nexus.display();
 }
 
 void mouseClicked() {
-
 }
 
 void saveHighscore() {
