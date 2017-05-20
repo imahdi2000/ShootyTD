@@ -1,10 +1,10 @@
 Player player;
 Nexus nexus;
 ArrayList<Bullet> bullets;
+ArrayList<Enemy> spawnedEnemies;
 /*
  Shop shop;
  ArrayList<Enemy> queuedEnemies;
- ArrayList<Enemy> spawnedEnemies;
  ArrayList<Turret> turrets;
  ArrayList<Trap> traps;
  ArrayList<Gold> gold;
@@ -19,6 +19,7 @@ void setup() {
   player = new Player();
   nexus = new Nexus();
   bullets = new ArrayList<Bullet>();
+  spawnedEnemies = new ArrayList<Enemy>();
 }
 
 void draw() {
@@ -48,19 +49,28 @@ void draw() {
     Bullet b = new Bullet(player, dir);
     bullets.add(b);
   }
+  
+  //create testing enemy
+  Enemy dummyEnemy = new Enemy();
+  spawnedEnemies.add(dummyEnemy);
 
   // Display and move bullets
   for (Bullet b : bullets) {
     b.display();
     b.move();
   }
+
+  // Display and move enemies
+  for (Enemy e : spawnedEnemies) {
+    e.display();
+    //b.move();
+  }
 }
 
 void keyReleased() {
   if (key == 'w' || key == 's' || key == UP || key == DOWN) { 
     player.setDirY(0);
-  }
-  if (key == 'a' || key == 'd' || key == LEFT || key == RIGHT) {
+  } else if (key == 'a' || key == 'd' || key == LEFT || key == RIGHT) {
     player.setDirX(0);
   }
 }
