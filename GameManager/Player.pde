@@ -1,6 +1,5 @@
 class Player extends PVector {
 
-  PVector loc;
   PVector dir;
   float speed;
   int startingHP;
@@ -11,7 +10,7 @@ class Player extends PVector {
   color c;
 
   Player() {
-    loc = new PVector(600, 300);
+    super(600, 300);
     dir = new PVector();
     speed = 3;
     startingHP = 100;
