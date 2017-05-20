@@ -2,11 +2,13 @@ class Nexus {
 
   int startingHP;
   int currentHP;
+  boolean isDead;
   color c;
 
   Nexus() {
     startingHP = 1000;
     currentHP = 1000;
+    isDead = false;
     c = color(102, 204, 255);
   }
 
@@ -15,6 +17,7 @@ class Nexus {
   }
 
   void dead() {
+
   }
 
   void display() {

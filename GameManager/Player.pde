@@ -21,22 +21,31 @@ class Player {
     y = 300;
   }
 
+  float getX() {
+    return x;
+  }
+
+  float getY() {
+    return y;
+  }
+
   // WASD movement
   void move(boolean[] keys) {
     if (keys['w']) { // Up
-      y -= 1;
+      y -= 2;
     }
     if (keys['a']) { // Left
-      x -= 1;
+      x -= 2;
     }
     if (keys['s']) { // Down
-      y += 1;
+      y += 2;
     }
     if (keys['d']) { // Right
-      x += 1;
+      x += 2;
     }
   }
 
+  // Create bullet
   void shoot() {
   }
 
