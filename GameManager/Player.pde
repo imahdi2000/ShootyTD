@@ -6,14 +6,9 @@ class Player {
   //ArrayList<Weapon> weapons
   boolean isDead;
   color c;
-
-
   // Movement
-  float speed;   
   float x;
   float y;
-  float dx;
-  float dy;
 
   Player() {
     startingHP = 100;
@@ -22,12 +17,8 @@ class Player {
     //weapons = new ArrayList<Weapon>();
     isDead = false;
     c = color(102, 255, 102);
-
-    speed = 3;  //initial speed is 3
     x = 600;  
     y = 300;
-    dx = 0;
-    dy = 0;
   }
 
   // WASD movement

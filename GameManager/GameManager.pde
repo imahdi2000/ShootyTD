@@ -37,11 +37,12 @@ void mouseClicked() {
 
 void keyPressed() {
   keys[key] = true;
-  System.out.println(key);
+  System.out.println(key + "Pressed");
 }
 
 void keyReleased() {
   keys[key] = false; 
+  System.out.println(key + "Released");
 }
 
 void saveHighscore() {
