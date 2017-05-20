@@ -1,20 +1,17 @@
 class Bullet extends PVector {
-  // PVectors have x, y, z components
+  // PVectors have x, y components
   PVector velocity;
   color c;
-  float x;
-  float y;
   
-  Bullet(float xSpawn, float ySpawn, PVector velocity) {
-    super(xSpawn, ySpawn);
-    this.velocity = velocity;
+  // Player/Turret location, direction to shoot
+  Bullet(PVector spawnPos, PVector dir) {
+    super(spawnPos.x, spawnPos.y);
+    velocity = dir;
     c = color(100,100,100);
-    x = xSpawn;
-    y = ySpawn;
   }
   
   void move() {
-    add(velocity);
+    this.add(velocity);
   }
   
   void display() {

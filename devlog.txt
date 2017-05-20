@@ -18,11 +18,13 @@ UNRESOLVED ISSUES
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+- Learned how to use PVectors
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+- We planned on using x,y coordinates for all the Objects (ex: Player, Bullets, etc).
+However, we realized it makes more sense to use PVectors than only x,y coordinates because vectors already have
+x,y components and have additional methods to easily calculate the magnitude of the vector.
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -49,7 +51,7 @@ Marcus, Ish, Xing Tao :: Worked on the GameManager, Player, and Nexus
 
 2017-05-20
 --------------------------------------------------------------
-Marcus :: Added Player movement
+Marcus :: Added Player movement and shooting
 
 yyyy-mm-dd
 --------------------------------------------------------------

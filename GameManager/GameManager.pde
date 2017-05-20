@@ -38,12 +38,15 @@ void draw() {
   fill(0);
   ellipse(mouse.x, mouse.y, 5, 5);
  
-  if (frameCount%5 == 0 && mousePressed) {
+  // Framecount is the firerate (change to weapon's firerate later)
+  if (mousePressed && frameCount % 20 == 0) {
     PVector playerV = new PVector(player.getX(), player.getY());
     PVector dir = PVector.sub(mouse, playerV);
-    dir.normalize();
-    dir.mult(2*3);
-    Bullet b = new Bullet(player.getX(), player.getY(), dir);
+    dir.normalize(); // Unit vector
+    dir.mult(8); // Bullet speed
+    
+    // Add bullet to arraylist
+    Bullet b = new Bullet(playerV, dir);
     bullets.add(b);
   }
   
