@@ -4,9 +4,17 @@ class Player {
   int currentHP;
   int money;
   //ArrayList<Weapon> weapons
-  Boolean isDead;
+  boolean isDead;
   color c;
-  
+
+
+  // Movement
+  float speed;   
+  float x;
+  float y;
+  float dx;
+  float dy;
+
   Player() {
     startingHP = 100;
     currentHP = 100;
@@ -14,9 +22,28 @@ class Player {
     //weapons = new ArrayList<Weapon>();
     isDead = false;
     c = color(102, 255, 102);
+
+    speed = 3;  //initial speed is 3
+    x = 600;  
+    y = 300;
+    dx = 0;
+    dy = 0;
   }
 
-  void move() {
+  // WASD movement
+  void move(boolean[] keys) {
+    if (keys['w']) { // Up
+      y -= 1;
+    }
+    if (keys['a']) { // Left
+      x -= 1;
+    }
+    if (keys['s']) { // Down
+      y += 1;
+    }
+    if (keys['d']) { // Right
+      x += 1;
+    }
   }
 
   void shoot() {
@@ -30,6 +57,6 @@ class Player {
 
   void display() {
     fill(c);
-    triangle(30, 75, 58, 20, 86, 75);
+    ellipse(x, y, 20, 20);
   }
 }

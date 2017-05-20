@@ -1,6 +1,6 @@
 Player player;
-
 Nexus nexus;
+
 /*
  Shop shop;
  ArrayList<Enemy> queuedEnemies;
@@ -10,8 +10,9 @@ Nexus nexus;
  ArrayList<Gold> gold;
  */
 int waveInterval;
-Boolean gameOver;
+boolean gameOver;
 int highscore;
+boolean[] keys = new boolean[128];
 
 void setup() {
   // Canvas size
@@ -24,11 +25,23 @@ void draw() {
   // Background color white
   background(255);
   noStroke();
+  // Display
   player.display();
   nexus.display();
+  // Movement
+  player.move(keys);
 }
 
 void mouseClicked() {
+}
+
+void keyPressed() {
+  keys[key] = true;
+  System.out.println(key);
+}
+
+void keyReleased() {
+  keys[key] = false; 
 }
 
 void saveHighscore() {
