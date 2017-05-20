@@ -1,17 +1,18 @@
 class Bullet extends PVector {
   // PVectors have x, y components
-  PVector velocity;
+  PVector loc;
   color c;
   
-  // Player/Turret location, direction to shoot
-  Bullet(PVector spawnPos, PVector dir) {
+  // Player/Turret location, other location (Mouse/enemy)
+  Bullet(PVector spawnPos, PVector otherLoc) {
     super(spawnPos.x, spawnPos.y);
-    velocity = dir;
+    loc = otherLoc;
     c = color(100,100,100);
   }
   
+  // Add another vector to current vector to move bullet
   void move() {
-    this.add(velocity);
+    this.add(loc);
   }
   
   void display() {

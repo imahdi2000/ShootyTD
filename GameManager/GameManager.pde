@@ -12,7 +12,6 @@ ArrayList<Bullet> bullets;
 int waveInterval;
 boolean gameOver;
 int highscore;
-boolean[] keys = new boolean[128];
 
 void setup() {
   // Canvas size
@@ -26,30 +25,30 @@ void draw() {
   // Background color white
   background(255);
   noStroke();
-  
+
   // Display
   player.display();
   nexus.display();
-  
+
   // Movement
-  player.move(keys);
-  
+  player.move();
+
+  // Mouse vector
   PVector mouse = new PVector(mouseX, mouseY);
   fill(0);
   ellipse(mouse.x, mouse.y, 5, 5);
- 
+
   // Framecount is the firerate (change to weapon's firerate later)
   if (mousePressed && frameCount % 20 == 0) {
-    PVector playerV = new PVector(player.getX(), player.getY());
-    PVector dir = PVector.sub(mouse, playerV);
+    PVector dir = PVector.sub(mouse, player); // Direction
     dir.normalize(); // Unit vector
     dir.mult(8); // Bullet speed
-    
+
     // Add bullet to arraylist
-    Bullet b = new Bullet(playerV, dir);
+    Bullet b = new Bullet(player, dir);
     bullets.add(b);
   }
-  
+
   // Display and move bullets
   for (Bullet b : bullets) {
     b.display();
@@ -57,17 +56,13 @@ void draw() {
   }
 }
 
-void mouseClicked() {
-}
-
-void keyPressed() {
-  keys[key] = true;
-  System.out.println(key + " Pressed");
-}
-
 void keyReleased() {
-  keys[key] = false; 
-  System.out.println(key + " Released");
+  if (key == 'w' || key == 's' || key == UP || key == DOWN) { 
+    player.setDirY(0);
+  }
+  if (key == 'a' || key == 'd' || key == LEFT || key == RIGHT) {
+    player.setDirX(0);
+  }
 }
 
 void saveHighscore() {

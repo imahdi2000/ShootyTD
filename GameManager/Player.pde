@@ -1,51 +1,55 @@
-class Player {
+class Player extends PVector {
 
+  PVector loc;
+  PVector dir;
+  float speed;
   int startingHP;
   int currentHP;
   int money;
   //ArrayList<Weapon> weapons
   boolean isDead;
   color c;
-  // Movement
-  float x;
-  float y;
 
   Player() {
+    loc = new PVector(600, 300);
+    dir = new PVector();
+    speed = 3;
     startingHP = 100;
     currentHP = 100;
     money = 0;
     //weapons = new ArrayList<Weapon>();
     isDead = false;
     c = color(102, 255, 102);
-    x = 600;  
-    y = 300;
   }
 
-  float getX() {
-    return x;
+  void setDirX(float x) {
+   dir.x = x; 
   }
-
-  float getY() {
-    return y;
+  
+  void setDirY(float y) {
+    dir.y = y;
   }
-
+  
   // WASD movement
-  void move(boolean[] keys) {
-    if (keys['w']) { // Up
-      y -= 2;
-    }
-    if (keys['a']) { // Left
-      x -= 2;
-    }
-    if (keys['s']) { // Down
-      y += 2;
-    }
-    if (keys['d']) { // Right
-      x += 2;
-    }
+  void move() {
+    player.add(dir); // Move towards
+    if (keyPressed) {
+      if (key == 'w' || key == UP) { // Up
+        dir.y = -speed;
+      }
+      if (key == 'a' || key == LEFT) { // Left
+        dir.x = -speed;
+      }
+      if (key == 's' || key == DOWN) { // Down
+        dir.y = speed;
+      }
+      if (key == 'd' || key == RIGHT) { // Right
+        dir.x = speed;
+      }
+    } 
   }
 
-  // Create bullet
+  // don't need this -- have to incorporate weapon with bullet
   void shoot() {
   }
 
