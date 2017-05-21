@@ -20,6 +20,9 @@ void setup() {
   nexus = new Nexus();
   bullets = new ArrayList<Bullet>();
   spawnedEnemies = new ArrayList<Enemy>();
+  ////spawned one enemy below for testing, remove later
+  Enemy dummyEnemy = new Enemy();
+  spawnedEnemies.add(dummyEnemy);
 }
 
 void draw() {
@@ -49,10 +52,9 @@ void draw() {
     Bullet b = new Bullet(player, dir);
     bullets.add(b);
   }
-  
+
   //create testing enemy
-  Enemy dummyEnemy = new Enemy();
-  spawnedEnemies.add(dummyEnemy);
+
 
   // Display and move bullets
   for (Bullet b : bullets) {
@@ -63,7 +65,7 @@ void draw() {
   // Display and move enemies
   for (Enemy e : spawnedEnemies) {
     e.display();
-    //b.move();
+    e.move();
   }
 }
 
