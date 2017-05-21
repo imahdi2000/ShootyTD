@@ -13,7 +13,7 @@ class Nexus {
     isDead = false;
     c = color(102, 204, 255);
     x = width/2;
-    y = width/2 + 100;
+    y = 360;
   }
 
   void takeDamage(int damage) {
@@ -26,6 +26,6 @@ class Nexus {
 
   void display() {
     fill(c);
-    ellipse(600, 360, 50, 50);
+    ellipse(x, y, 50, 50);
   }
 }
