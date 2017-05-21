@@ -52,6 +52,7 @@ Marcus, Ish, Xing Tao :: Worked on the GameManager, Player, and Nexus
 2017-05-20
 --------------------------------------------------------------
 Marcus :: Added Player movement and shooting
+Ish, Xing Tao :: Worked on enemy
 
 yyyy-mm-dd
 --------------------------------------------------------------

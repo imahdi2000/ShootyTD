@@ -8,7 +8,7 @@ class Enemy extends PVector {
   Boolean isDead;
   Object target;
   color c;
-  PVector bob = new PVector(-1,1);
+  PVector bob = new PVector(-1, 1);
 
 
   Enemy() {
@@ -18,6 +18,7 @@ class Enemy extends PVector {
     goldAmount = 50;
     isDead = false;
     c = color(102, 102, 102);
+    dir = bob;
   }
 
   Enemy(PVector nexusloc) {
@@ -31,15 +32,27 @@ class Enemy extends PVector {
   }
 
   void setDirX(float x) {
-   // dir.x = x;
+    dir.x = x;
   }
 
   void setDirY(float y) {
-   // dir.y = y;
+    dir.y = y;
   }
 
   void move() {      
-    this.add(bob);
+    //this.add(bob);
+    //this.add(dir);
+    if (this.x > 320) {
+      setDirX(-1);
+    } else {
+      setDirX(1);
+    }
+    if (this.y > 300) {
+      setDirY(-1);
+    } else {
+      setDirY(1);
+    }
+    this.add(dir);
   }
 
   void attack(Object x) {
