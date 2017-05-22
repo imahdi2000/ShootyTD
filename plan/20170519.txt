@@ -59,10 +59,32 @@ What is the timeline, and how does it accommodate setbacks, course changes?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 We plan on finishing the MVP by May 27th. By testing the game and bug fixing over the
 weekend, we will be able to decide if we want to make any major changes to the game.
-Then we will work on the shop, turrets, traps, and placement until May 2nd. This gives
+Then we will work on the shop, turrets, traps, highscore, and placement until May 2nd. This gives
 us 3 days to polish the game and bug fix.
 
-yyyy-mm-dd
---------------------------------------------------------------
-<plan for today>
-==============================================================
+Shop:
+- Create a GUI that displays the nexus' HP
+- Add buttons for the weapons
+  - Description
+  - Price
+- Add functionality
+
+Turrets:
+- Create an object that can automatically shoot enemies based on a queue proritized by distance
+- Add button to GUI that allows player to buy turret
+- Figure out how to place turret on map
+
+Trap:
+- Create an object that deals damage when an enemy walks on top of it
+- Add button to GUI that allows player to buy trap
+- Create stack based on position
+
+Highscore:
+- Calculate the score based on what wave the player reached
+- Add the score to the CSV file when the game ends
+- Run a sort on the values in the CSV file to order them
+
+
+If we have time:
+- Add upgrade buttons
+- More enemies

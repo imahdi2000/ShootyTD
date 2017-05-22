@@ -6,6 +6,6 @@ FILENAME WHERE BUG WAS FOUND IF POSSIBLE: DESCRIPTION OF BUG : HOW BUG WAS ENCOU
 
 Ran GameManager: Character leaves the screen instead of being bound: Pressed arrow keys while shooting and chracter left the screen boundaries.
 
-Ran GameManger: Chracter keeps moving despite not pressing key.: Hold down a key fr more than a few seconds and the chracter will continously move in that direction. When another key is pressed, it will move continously in the diresction of the key pressed.
+Ran GameManger: Chracter keeps moving despite not pressing key.: Hold down a key for more than a few seconds and the chracter will continously move in that direction. When another key is pressed, it will move continously in the diresction of the key pressed.
 
 
