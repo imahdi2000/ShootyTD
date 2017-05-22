@@ -20,8 +20,10 @@ void setup() {
   nexus = new Nexus();
   bullets = new ArrayList<Bullet>();
   spawnedEnemies = new ArrayList<Enemy>();
+
+
   ////spawned one enemy below for testing, remove later
-  Enemy dummyEnemy = new Enemy();
+  Enemy dummyEnemy = new Enemy(player);
   spawnedEnemies.add(dummyEnemy);
 }
 
@@ -29,7 +31,7 @@ void draw() {
   // Background color white
   background(255);
   noStroke();
-
+  smooth();
   // Display
   player.display();
   nexus.display();
@@ -43,7 +45,7 @@ void draw() {
   ellipse(mouse.x, mouse.y, 5, 5);
 
   // Framecount is the firerate (change to weapon's firerate later)
-  if (mousePressed && frameCount % 20 == 0) {
+  if (mousePressed && frameCount % 15 == 0) {
     PVector dir = PVector.sub(mouse, player); // Direction
     dir.normalize(); // Unit vector
     dir.mult(8); // Bullet speed
@@ -52,9 +54,6 @@ void draw() {
     Bullet b = new Bullet(player, dir);
     bullets.add(b);
   }
-
-  //create testing enemy
-
 
   // Display and move bullets
   for (Bullet b : bullets) {
@@ -69,10 +68,27 @@ void draw() {
   }
 }
 
+// Player movement - move
+void keyPressed() {
+      if (key == 'w' || keyCode == UP) { // Up
+        player.setDirY(-3);
+      }
+      if (key == 'a' || keyCode == LEFT) { // Left
+        player.setDirX(-3);
+      }
+      if (key == 's' || keyCode == DOWN) { // Down
+        player.setDirY(3);
+      }
+      if (key == 'd' || keyCode == RIGHT) { // Right
+        player.setDirX(3);
+    }  
+}
+
+// Player movement - stop moving
 void keyReleased() {
-  if (key == 'w' || key == 's' || key == UP || key == DOWN) { 
+  if (key == 'w' || key == 's' || keyCode == UP || keyCode == DOWN) { 
     player.setDirY(0);
-  } else if (key == 'a' || key == 'd' || key == LEFT || key == RIGHT) {
+  } else if (key == 'a' || key == 'd' || keyCode == LEFT || keyCode == RIGHT) {
     player.setDirX(0);
   }
 }

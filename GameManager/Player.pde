@@ -22,7 +22,7 @@ class Player extends PVector {
   }
 
   void setDirX(float x) {
-   dir.x = x; 
+    dir.x = x; 
   }
   
   void setDirY(float y) {
@@ -31,21 +31,7 @@ class Player extends PVector {
   
   // WASD movement
   void move() {
-    player.add(dir); // Move towards
-    if (keyPressed) {
-      if (key == 'w' || key == UP) { // Up
-        dir.y = -speed;
-      }
-      if (key == 'a' || key == LEFT) { // Left
-        dir.x = -speed;
-      }
-      if (key == 's' || key == DOWN) { // Down
-        dir.y = speed;
-      }
-      if (key == 'd' || key == RIGHT) { // Right
-        dir.x = speed;
-      }
-    } 
+    this.add(dir); // Move towards
   }
 
   // don't need this -- have to incorporate weapon with bullet

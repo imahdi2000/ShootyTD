@@ -1,61 +1,50 @@
 class Enemy extends PVector {
 
   PVector dir;
+  PVector target;
+  float speed;
   int startingHP;
   int currentHP;
   int damage;
   int goldAmount;
   Boolean isDead;
-  Object target;
   color c;
-  PVector bob = new PVector(-1, 1);
 
-
-  Enemy() {
+  Enemy(PVector newTarget) {
     super(800, 300);
+    dir = new PVector();
+    target = newTarget;
+    speed = 2;
     startingHP = 100;
     currentHP = 100;
     goldAmount = 50;
     isDead = false;
     c = color(102, 102, 102);
-    dir = bob;
   }
 
-  Enemy(PVector nexusloc) {
-    super(800, 300);
-    startingHP = 100;
-    currentHP = 100;
-    goldAmount = 50;
-    isDead = false;
-    c = color(102, 102, 102);
-    dir = nexusloc;
-  }
-
-  void setDirX(float x) {
-    dir.x = x;
-  }
-
-  void setDirY(float y) {
-    dir.y = y;
-  }
-
-  void move() {      
-    //this.add(bob);
-    //this.add(dir);
-    if (this.x > 320) {
-      setDirX(-1);
-    } else {
-      setDirX(1);
-    }
-    if (this.y > 300) {
-      setDirY(-1);
-    } else {
-      setDirY(1);
+  void move() {   
+    if (this.x == target.x && this.y == target.y) {
+       dir.x = 0;
+       dir.y = 0;
     }
     this.add(dir);
+    if (this.y > target.y) { // Up
+      dir.y = -speed;
+    }
+    if (this.x < target.x) { // Left
+      dir.x = speed;
+    }
+    if (this.y < target.y) { // Down
+      dir.y = speed;
+    }
+    if (this.x > target.x) { // Right
+      dir.x = -speed;
+    }
   }
 
-  void attack(Object x) {
+  void attack() {
+    // If it touches target (player --> smack smack)
+    // (nexus --> Remove from array and deal damage to nexus)
   }
 
   void dropGold() {
@@ -66,6 +55,10 @@ class Enemy extends PVector {
   }
 
   void dead() {
+    if (currentHP <= 0) {
+      dropGold();
+      isDead = true;
+    }
   }
 
   void display() {

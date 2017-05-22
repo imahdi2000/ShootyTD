@@ -53,6 +53,13 @@ Marcus, Ish, Xing Tao :: Worked on the GameManager, Player, and Nexus
 --------------------------------------------------------------
 Marcus :: Added Player movement and shooting
 Ish, Xing Tao :: Worked on enemy
+==============================================================
+
+2017-05-22
+--------------------------------------------------------------
+Marcus, Xing Tao :: Worked on making the enemy follow its 'target' (player or nexus)
+Marcus :: Fixed player movement bug
+==============================================================
 
 yyyy-mm-dd
 --------------------------------------------------------------
