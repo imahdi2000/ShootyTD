@@ -59,6 +59,8 @@ Ish, Xing Tao :: Worked on enemy
 --------------------------------------------------------------
 Marcus, Xing Tao :: Worked on making the enemy follow its 'target' (player or nexus)
 Marcus :: Fixed player movement bug and added health bars to player and enemy
+- Added bullet collision with enemy
+- Health bars now decrease based on health
 ==============================================================
 
 yyyy-mm-dd
