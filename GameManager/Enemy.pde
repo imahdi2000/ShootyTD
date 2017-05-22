@@ -61,8 +61,20 @@ class Enemy extends PVector {
     }
   }
 
+  // Turn red if less than 25% hp
+  void healthBar() {
+    if (currentHP < 25) {
+      fill(255, 0, 0);
+    } else {
+      fill(0, 255, 0);
+    }
+    float drawWidth = (currentHP / startingHP) * 50;
+    rect(x - 25, y - 25, drawWidth, 5);
+  }
+  
   void display() {
     fill(c);
     ellipse(x, y, 30, 30);
+    healthBar();
   }
 }

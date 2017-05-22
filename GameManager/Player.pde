@@ -22,13 +22,13 @@ class Player extends PVector {
   }
 
   void setDirX(float x) {
-    dir.x = x; 
+    dir.x = x;
   }
-  
+
   void setDirY(float y) {
     dir.y = y;
   }
-  
+
   // WASD movement
   void move() {
     this.add(dir); // Move towards
@@ -44,8 +44,20 @@ class Player extends PVector {
   void dead() {
   }
 
+  // Turn red if less than 25% hp
+  void healthBar() {
+    if (currentHP < 25) {
+      fill(255, 0, 0);
+    } else {
+      fill(0, 255, 0);
+    }
+    float drawWidth = (currentHP / startingHP) * 50;
+    rect(x - 25, y - 25, drawWidth, 5);
+  }
+
   void display() {
     fill(c);
     ellipse(x, y, 20, 20);
+    healthBar();
   }
 }

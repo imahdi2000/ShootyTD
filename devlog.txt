@@ -58,7 +58,7 @@ Ish, Xing Tao :: Worked on enemy
 2017-05-22
 --------------------------------------------------------------
 Marcus, Xing Tao :: Worked on making the enemy follow its 'target' (player or nexus)
-Marcus :: Fixed player movement bug
+Marcus :: Fixed player movement bug and added health bars to player and enemy
 ==============================================================
 
 yyyy-mm-dd
