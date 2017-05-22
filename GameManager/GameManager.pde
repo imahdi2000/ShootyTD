@@ -55,33 +55,47 @@ void draw() {
     bullets.add(b);
   }
 
-  // Display and move bullets
-  for (Bullet b : bullets) {
-    b.display();
-    b.move();
+  // Display and move enemies
+  for (int e = 0; e < spawnedEnemies.size(); e++) {
+    spawnedEnemies.get(e).display();
+    spawnedEnemies.get(e).move();
+    spawnedEnemies.get(e).dead();
+    // Remove enemies from ArrayList if they are dead
+    if (spawnedEnemies.get(e).isDead) {
+      spawnedEnemies.remove(e);
+    }
   }
 
-  // Display and move enemies
-  for (Enemy e : spawnedEnemies) {
-    e.display();
-    e.move();
+  // Display and move bullets
+  for (int b = 0; b < bullets.size(); b++) {
+    bullets.get(b).display();
+    bullets.get(b).move();
+    // Check enemy collision
+    for (int e = 0; e < spawnedEnemies.size(); e++) {
+      if (bullets.get(b).collidesWithEnemy(spawnedEnemies.get(e))) {
+        // Remove bullets after dealing damage to enemy
+        spawnedEnemies.get(e).takeDamage(10);
+        bullets.remove(bullets.get(b));
+        System.out.println(spawnedEnemies.get(e).isDead);
+      }
+    }
   }
 }
 
 // Player movement - move
 void keyPressed() {
-      if (key == 'w' || keyCode == UP) { // Up
-        player.setDirY(-3);
-      }
-      if (key == 'a' || keyCode == LEFT) { // Left
-        player.setDirX(-3);
-      }
-      if (key == 's' || keyCode == DOWN) { // Down
-        player.setDirY(3);
-      }
-      if (key == 'd' || keyCode == RIGHT) { // Right
-        player.setDirX(3);
-    }  
+  if (key == 'w' || keyCode == UP) { // Up
+    player.setDirY(-3);
+  }
+  if (key == 'a' || keyCode == LEFT) { // Left
+    player.setDirX(-3);
+  }
+  if (key == 's' || keyCode == DOWN) { // Down
+    player.setDirY(3);
+  }
+  if (key == 'd' || keyCode == RIGHT) { // Right
+    player.setDirX(3);
+  }
 }
 
 // Player movement - stop moving

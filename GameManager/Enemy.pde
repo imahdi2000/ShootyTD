@@ -24,21 +24,19 @@ class Enemy extends PVector {
 
   void move() {   
     if (this.x == target.x && this.y == target.y) {
-       dir.x = 0;
-       dir.y = 0;
+      dir.x = 0;
+      dir.y = 0;
     }
     this.add(dir);
-    if (this.y > target.y) { // Up
+    if (this.y > target.y) { // Down
       dir.y = -speed;
-    }
-    if (this.x < target.x) { // Left
-      dir.x = speed;
-    }
-    if (this.y < target.y) { // Down
+    } else if (this.y < target.y) { // Up
       dir.y = speed;
     }
-    if (this.x > target.x) { // Right
+    if (this.x > target.x) { // Left
       dir.x = -speed;
+    } else if (this.x < target.x) { // Right
+      dir.x = speed;
     }
   }
 
@@ -63,15 +61,26 @@ class Enemy extends PVector {
 
   // Turn red if less than 25% hp
   void healthBar() {
-    if (currentHP < 25) {
-      fill(255, 0, 0);
+    if (currentHP <= 25) {
+      fill(255, 0, 0); // Red
     } else {
-      fill(0, 255, 0);
+      fill(0, 255, 0); // Green
     }
-    float drawWidth = (currentHP / startingHP) * 50;
-    rect(x - 25, y - 25, drawWidth, 5);
+
+    if (currentHP >= 0) {
+      
+      // Bar
+      float drawWidth = (float(currentHP) / startingHP) * 50;
+      rect(x - 25, y - 25, drawWidth, 5);
+
+      // Outline
+      stroke(0);
+      noFill();
+      rect(x - 25, y - 25, 50, 5);
+      
+    }
   }
-  
+
   void display() {
     fill(c);
     ellipse(x, y, 30, 30);

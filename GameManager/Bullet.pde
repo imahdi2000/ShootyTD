@@ -20,7 +20,9 @@ class Bullet extends PVector {
     ellipse(x, y, 10, 10);
   }
   
-  boolean collidesWithEnemy(Object enemy) {
-    return false;
+  boolean collidesWithEnemy(Enemy enemy) {
+    float d = dist(this, enemy);
+    //System.out.println(d);
+    return  d <= 10;
   }
 }
