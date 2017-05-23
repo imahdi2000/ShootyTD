@@ -64,6 +64,11 @@ Marcus :: Fixed player movement bug and added health bars to player and enemy
 Ish :: Created graphics
 ==============================================================
 
+2017-05-23
+--------------------------------------------------------------
+Marcus :: Changed health bars UI
+==============================================================
+
 yyyy-mm-dd
 --------------------------------------------------------------
 <Member> :: <Thing member did.>

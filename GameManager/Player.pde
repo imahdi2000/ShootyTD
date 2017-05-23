@@ -44,33 +44,26 @@ class Player extends PVector {
   void dead() {
   }
 
-  // Turn red if less than 25% hp
+  // Health Bar
   void healthBar() {
-    if (currentHP <= 25) {
-      fill(255, 0, 0); // Red
-    } else {
-      fill(0, 255, 0); // Greem
-    }
-
     if (currentHP >= 0) {
+      // Outline
+      stroke(0);
+      fill(255, 0, 0);
+      rect(x - 25, y - 25, 50, 5);
 
       // Bar
       float drawWidth = (float(currentHP) / startingHP) * 50;
+      fill(0, 255, 0); // Green
       rect(x - 25, y - 25, drawWidth, 5);
-
-      // Outline
-      stroke(0);
-      noFill();
-      rect(x - 25, y - 25, 50, 5);
-      
     }
   }
 
   void display() {
     fill(c);
-   // ellipse(x, y, 20, 20);
-       imageMode(CENTER);
-    image(play,x,y);
+    // ellipse(x, y, 20, 20);
+    imageMode(CENTER);
+    image(play, x, y);
     healthBar();
   }
 }
