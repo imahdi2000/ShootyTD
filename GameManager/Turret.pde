@@ -5,7 +5,6 @@ class Turret extends PVector{
   int price;
   double fireRate;
   double range;
-  ArrayList<Enemy> inRange;
   PVector loc;
 
   Turret() {

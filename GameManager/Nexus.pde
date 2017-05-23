@@ -6,12 +6,11 @@ class Nexus extends PVector {
   color c;
 
   Nexus() {
+    super(width / 2, height / 2);
     startingHP = 1000;
     currentHP = 1000;
     isDead = false;
     c = color(102, 204, 255);
-    x = width / 2;
-    y = height / 2;
   }
 
   void takeDamage(int damage) {

@@ -1,4 +1,3 @@
-
 PImage nx;
 PImage bull;
 PImage ene;
