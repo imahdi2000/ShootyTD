@@ -1,0 +1,97 @@
+MonkeyBusiness
+Marcus Ng
+Xing Tao Shi
+Ishtiaque Mahdi
+pd 4
+---------------------
+ShootyTD
+
+ _______   __         ______   __    __ 
+/       \ /  |       /      \ /  \  /  |
+$$$$$$$  |$$ |      /$$$$$$  |$$  \ $$ |
+$$ |__$$ |$$ |      $$ |__$$ |$$$  \$$ |
+$$    $$/ $$ |      $$    $$ |$$$$  $$ |
+$$$$$$$/  $$ |      $$$$$$$$ |$$ $$ $$ |
+$$ |      $$ |_____ $$ |  $$ |$$ |$$$$ |
+$$ |      $$       |$$ |  $$ |$$ | $$$ |
+$$/       $$$$$$$$/ $$/   $$/ $$/   $$/ 
+==============================================================
+
+Which jobs are most crucial?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MVP:
+- Nexus in the center of the map (completed)
+- Player is able to move with WASD and shoot with mouse click (completed)
+- Enemies spawn in waves and target the player or nexus based on vicinity
+- Player can kill enemies
+- Enemies drop gold on death
+- Shop with weapons the player can purchase
+- Gameover if the player or nexus dies
+- Nexus, player and enemy health bars are visible
+
+Which components constitute core functionality (vs non-essential)?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Player movement and shooting (completed)
+- Enemy targeting and attacking
+- Bullets deal damage to enemies
+
+Which components are prerequisites for others?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Bullets are necessary for the player and turret to shoot (completed)
+- Weapons are required for the player to deal damage
+- Shop requires weapons, turrets, or traps for the player to buy items/structures
+- Enemies require a player or structure to target during pathing (completed)
+- Gold requires an enemy to drop gold on death
+
+Which tasks can be delegated, and which must be collaboratively tackled?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Player Movement, Enemy AI, Placement of Structures, and Shop HUD should be
+approached together
+
+- Can be delegated:
+  - Game Manager
+  - Player shooting
+  - Enemy skeleton
+  - Enemies dropping gold
+  - Turret shooting and targeting
+  - Trap creation
+    - We plan on creating a grid on the screen to use for testing but when the traps/towers function properly, they can be removed.
+  - Displaying health bars
+
+What is the timeline, and how does it accommodate setbacks, course changes?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+We plan on finishing the MVP by May 27th. By testing the game and bug fixing over the
+weekend, we will be able to decide if we want to make any major changes to the game.
+Then we will work on the shop, turrets, traps, highscore, and placement until May 2nd. This gives
+us 3 days to polish the game and bug fix.
+
+Shop:
+/*
+- Create a GUI that displays the nexus' HP
+- Add buttons for the weapons
+  - Description
+  - Price
+- Add functionality
+*/
+
+- Accessible on the bottom of the screen where you will be able to purchase weapons, turrets and traps.
+
+Turrets:
+- Create an object that can automatically shoot enemies based on a queue proritized by distance
+- Add button to GUI that allows player to buy turret
+- Figure out how to place turret on map
+
+Trap:
+- Create an object that deals damage when an enemy walks on top of it
+- Add button to GUI that allows player to buy trap
+- Create stack based on position
+
+Highscore:
+- Calculate the score based on what wave the player reached
+- Add the score to the CSV file when the game ends
+- Run a sort on the values in the CSV file to order them
+
+
+If we have time:
+- Add upgrade buttons
+- More enemies
