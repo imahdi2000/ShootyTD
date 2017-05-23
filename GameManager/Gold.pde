@@ -1,30 +1,25 @@
-class Gold{
+class Gold extends PVector {
   int amount;
-  
-  Gold(){
-   amount = 1; 
+  color c;
+
+  Gold(PVector deadSpot, int val) {
+    this.x = deadSpot.x;
+    this.y = deadSpot.y;
+    amount = val;
+    c = color(255, 232, 0);
   }
-  
-  Gold(int val){
-   amount = val; 
+
+  void display() {
+    fill(c);
+    imageMode(CENTER);
+    image(gol,x,y);
   }
-  
-  void pickupGold(){
-    
+
+  int getAmount() {
+    return amount;
   }
-  
-  void display(){
-     imageMode(CENTER);
-   // image(gol,x,y);
+
+  void setAmount(int val) {
+    amount = val;
   }
-  
-  int getAmount(){
-   return amount; 
-  }
-  
-  void setAmount(int val){
-   amount = val;
-  }
- 
-  
 }

@@ -59,6 +59,12 @@ class Player extends PVector {
     }
   }
 
+  boolean collidesWithGold(Gold g) {
+    float d = dist(this, g);
+    //System.out.println(d);
+    return  d <= 10;
+  }
+
   void display() {
     fill(c);
     // ellipse(x, y, 20, 20);

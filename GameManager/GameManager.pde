@@ -9,12 +9,12 @@ Player player;
 Nexus nexus;
 ArrayList<Bullet> bullets;
 ArrayList<Enemy> spawnedEnemies;
+ArrayList<Gold> goldList;
 /*
  Shop shop;
  ArrayList<Enemy> queuedEnemies;
  ArrayList<Turret> turrets;
  ArrayList<Trap> traps;
- ArrayList<Gold> gold;
  */
 int waveInterval;
 boolean gameOver;
@@ -34,7 +34,7 @@ void setup() {
   nexus = new Nexus();
   bullets = new ArrayList<Bullet>();
   spawnedEnemies = new ArrayList<Enemy>();
-
+  goldList = new ArrayList<Gold>(); 
 
   ////spawned one enemy below for testing, remove later
   Enemy dummyEnemy = new Enemy(player);
@@ -45,7 +45,7 @@ void draw() {
   // Background color white
   //background(255);
   background(0);
-  image(m1,600,360);
+  image(m1, 600, 360);
   noStroke();
   smooth();
   // Display
@@ -78,6 +78,7 @@ void draw() {
     spawnedEnemies.get(e).dead();
     // Remove enemies from ArrayList if they are dead
     if (spawnedEnemies.get(e).isDead) {
+      goldList.add(new Gold(spawnedEnemies.get(e), spawnedEnemies.get(e).goldAmount));//add a gold when he dies
       spawnedEnemies.remove(e);
     }
   }
@@ -92,11 +93,24 @@ void draw() {
         // Remove bullets after dealing damage to enemy
         spawnedEnemies.get(e).takeDamage(10);
         bullets.remove(bullets.get(b));
-        System.out.println(spawnedEnemies.get(e).isDead);
+        //System.out.println(spawnedEnemies.get(e).isDead);
       }
     }
   }
+
+  // Display gold
+  for (int g = 0; g < goldList.size(); g++) {
+    goldList.get(g).display();
+    // Check for gold collision
+    if (player.collidesWithGold(goldList.get(g))) { //if you touch the gold
+      //System.out.println(player.money);
+      player.money = player.money + goldList.get(g).amount; //add it to ur money
+      goldList.remove(g); //remove it from the list
+      //System.out.println(player.money);
+    }
+  }
 }
+
 
 // Player movement - move
 void keyPressed() {

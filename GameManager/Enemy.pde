@@ -45,16 +45,12 @@ class Enemy extends PVector {
     // (nexus --> Remove from array and deal damage to nexus)
   }
 
-  void dropGold() {
-  }
-
   void takeDamage(int damage) {
     currentHP -= damage;
   }
 
   void dead() {
     if (currentHP <= 0) {
-      dropGold();
       isDead = true;
     }
   }

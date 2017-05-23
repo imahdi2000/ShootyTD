@@ -67,6 +67,9 @@ Ish :: Created graphics
 2017-05-23
 --------------------------------------------------------------
 Marcus :: Changed health bars UI
+Xing Tao :: Created gold class
+- worked on enemies dropping gold
+- players picking up gold
 ==============================================================
 
 yyyy-mm-dd
