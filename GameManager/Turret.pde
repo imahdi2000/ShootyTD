@@ -1,4 +1,4 @@
-class Turret {
+class Turret extends PVector{
   int startingHP; 
   int currentHP; 
   int damage;
@@ -6,6 +6,7 @@ class Turret {
   double fireRate;
   double range;
   ArrayList<Enemy> inRange;
+  PVector loc;
 
   Turret() {
     startingHP = 50; 
@@ -25,5 +26,7 @@ class Turret {
   }
 
   void display() {
+    imageMode(CENTER);
+    image(turr,x,y);
   }
 }

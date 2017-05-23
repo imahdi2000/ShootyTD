@@ -24,6 +24,8 @@ class Nexus extends PVector{
 
   void display() {
     fill(c);
-    ellipse(x, y, 50, 50);
+   // ellipse(x, y, 50, 50);
+    imageMode(CENTER);
+    image(nx,x,y);
   }
 }

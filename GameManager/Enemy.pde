@@ -83,7 +83,9 @@ class Enemy extends PVector {
 
   void display() {
     fill(c);
-    ellipse(x, y, 30, 30);
+   // ellipse(x, y, 30, 30);
+    imageMode(CENTER);
+    image(ene,x,y);
     healthBar();
   }
 }

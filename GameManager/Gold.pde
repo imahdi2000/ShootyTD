@@ -14,7 +14,8 @@ class Gold{
   }
   
   void display(){
-    
+     imageMode(CENTER);
+   // image(gol,x,y);
   }
   
   int getAmount(){

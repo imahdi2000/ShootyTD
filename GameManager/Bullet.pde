@@ -17,7 +17,9 @@ class Bullet extends PVector {
   
   void display() {
     fill(c);
-    ellipse(x, y, 10, 10);
+    //ellipse(x, y, 10, 10);
+        imageMode(CENTER);
+    image(bull,x,y);
   }
   
   boolean collidesWithEnemy(Enemy enemy) {

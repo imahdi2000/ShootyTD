@@ -1,3 +1,11 @@
+
+PImage nx;
+PImage bull;
+PImage ene;
+PImage turr;
+PImage gol;
+PImage play;
+PImage m1;
 Player player;
 Nexus nexus;
 ArrayList<Bullet> bullets;
@@ -16,6 +24,13 @@ int highscore;
 void setup() {
   // Canvas size
   size(1200, 720);
+  nx = loadImage("nexus.png");
+  bull = loadImage("bullet.png");
+  ene = loadImage("enemy.png");
+  turr = loadImage("turret.png");
+  gol = loadImage("gold.png");
+  play = loadImage("player.png");
+  m1 = loadImage("map1.png");
   player = new Player();
   nexus = new Nexus();
   bullets = new ArrayList<Bullet>();
@@ -29,7 +44,9 @@ void setup() {
 
 void draw() {
   // Background color white
-  background(255);
+  //background(255);
+  background(0);
+  image(m1,600,360);
   noStroke();
   smooth();
   // Display

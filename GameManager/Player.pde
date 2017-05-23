@@ -68,7 +68,9 @@ class Player extends PVector {
 
   void display() {
     fill(c);
-    ellipse(x, y, 20, 20);
+   // ellipse(x, y, 20, 20);
+       imageMode(CENTER);
+    image(play,x,y);
     healthBar();
   }
 }
