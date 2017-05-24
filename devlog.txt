@@ -70,6 +70,9 @@ Marcus :: Changed health bars UI
 Xing Tao :: Created gold class
 - worked on enemies dropping gold
 - players picking up gold
+Ish::
+- worked on shop (check for money and exchange money for weapons)
+-worked on weapons (created basic weapons to add to shop)
 ==============================================================
 
 yyyy-mm-dd

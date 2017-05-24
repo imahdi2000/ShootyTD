@@ -4,15 +4,23 @@ class Shop{
  ArrayList<Trap> traps;
  
 Shop(){
-  
+  Weapon blaster = new Weapon("blaster");
+  Weapon laser = new Weapon("laser");
+  Weapon banana = new Weapon("banana");
+  weapons.add(blaster);
+  weapons.add(laser);
+  weapons.add(banana);
 }
 
-void buy(int val){
-  
+void buy(Weapon pewpew, Player player){
+  if (afford(pewpew)){
+    player.setMoney(pewpew.getPrice());
+    player.setWeapons(pewpew);
+  }
 }
 
-void afford(int val){
-  
+boolean afford(Weapon pewpew){
+  return player.getMoney() > pewpew.getPrice();
 }
 
 void display(){

@@ -5,7 +5,7 @@ class Player extends PVector {
   int startingHP;
   int currentHP;
   int money;
-  //ArrayList<Weapon> weapons
+  ArrayList<Weapon> weapons;
   boolean isDead;
   color c;
 
@@ -71,5 +71,18 @@ class Player extends PVector {
     imageMode(CENTER);
     image(play, x, y);
     healthBar();
+  }
+
+
+  int getMoney() {
+    return money;
+  }
+
+  void setMoney(int cost) {
+    money = money - cost;
+  }
+  
+  void setWeapons(Weapon pewpew){
+   weapons.add(pewpew); 
   }
 }

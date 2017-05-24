@@ -24,7 +24,7 @@ void setup() {
   // Canvas size
   size(1200, 720);
   nx = loadImage("nexus.png");
-  bull = loadImage("bullet.png");
+  bull = loadImage("bullets.png");
   ene = loadImage("enemy.png");
   turr = loadImage("turret.png");
   gol = loadImage("gold.png");
