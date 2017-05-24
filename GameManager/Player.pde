@@ -39,6 +39,7 @@ class Player extends PVector {
   }
 
   void takeDamage(int damage) {
+    currentHP -= damage;
   }
 
   void dead() {
@@ -59,8 +60,8 @@ class Player extends PVector {
     }
   }
 
-  boolean collidesWithGold(Gold g) {
-    float d = dist(this, g);
+  boolean collidesWithObject(PVector obj) {
+    float d = dist(this, obj);
     //System.out.println(d);
     return  d <= 10;
   }

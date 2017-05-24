@@ -8,6 +8,7 @@ class Enemy extends PVector {
   int damage;
   int goldAmount;
   Boolean isDead;
+  Boolean inRangeNexus;
   color c;
 
   Enemy(PVector newTarget) {
@@ -17,8 +18,10 @@ class Enemy extends PVector {
     speed = 2;
     startingHP = 100;
     currentHP = 100;
+    damage = 1;
     goldAmount = 50;
     isDead = false;
+    inRangeNexus = false;
     c = color(102, 102, 102);
   }
 
@@ -40,11 +43,25 @@ class Enemy extends PVector {
     }
   }
 
-  void attack() {
+  // TODO: DELAY ATTACKS WITH A COUNTER
+  void attackPlayer(Player player) {
     // If it touches target (player --> smack smack)
-    // (nexus --> Remove from array and deal damage to nexus)
+    // Attack player
+    if (dist(this, target) < 15 && !inRangeNexus) {
+      player.takeDamage(damage);
+    }
   }
 
+  void attackNexus(Nexus nexus) {
+    // Attack Nexus
+    if (dist(this, target) < 15) {
+       inRangeNexus = true; 
+    }
+    if (inRangeNexus) {
+      nexus.takeDamage(damage);
+    }
+  }
+  
   void takeDamage(int damage) {
     currentHP -= damage;
   }
@@ -60,21 +77,21 @@ class Enemy extends PVector {
     if (currentHP >= 0) {
       // Outline
       stroke(0);
-      fill(255,0,0);
+      fill(255, 0, 0);
       rect(x - 25, y - 25, 50, 5);
-      
+
       // Bar
       float drawWidth = (float(currentHP) / startingHP) * 50;
       fill(0, 255, 0); // Green
-      rect(x - 25, y - 25, drawWidth, 5);   
+      rect(x - 25, y - 25, drawWidth, 5);
     }
   }
 
   void display() {
     fill(c);
-   // ellipse(x, y, 30, 30);
+    // ellipse(x, y, 30, 30);
     imageMode(CENTER);
-    image(ene,x,y);
+    image(ene, x, y);
     healthBar();
   }
 }

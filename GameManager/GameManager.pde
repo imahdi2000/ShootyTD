@@ -4,7 +4,7 @@ PImage ene;
 PImage turr;
 PImage gol;
 PImage play;
-PImage m1;
+//PImage m1;
 Player player;
 Nexus nexus;
 ArrayList<Bullet> bullets;
@@ -29,7 +29,7 @@ void setup() {
   turr = loadImage("turret.png");
   gol = loadImage("gold.png");
   play = loadImage("player.png");
-  m1 = loadImage("map1.png");
+  // m1 = loadImage("map1.png");
   player = new Player();
   nexus = new Nexus();
   bullets = new ArrayList<Bullet>();
@@ -43,9 +43,9 @@ void setup() {
 
 void draw() {
   // Background color white
-  //background(255);
-  background(0);
-  image(m1, 600, 360);
+  background(255);
+  //background(0);
+  //image(m1, 600, 360);
   noStroke();
   smooth();
   // Display
@@ -73,12 +73,15 @@ void draw() {
 
   // Display and move enemies
   for (int e = 0; e < spawnedEnemies.size(); e++) {
-    spawnedEnemies.get(e).display();
-    spawnedEnemies.get(e).move();
-    spawnedEnemies.get(e).dead();
+    Enemy en = spawnedEnemies.get(e);
+    en.display();
+    en.move();
+    en.dead();
+    en.attackPlayer(player);
+    en.attackNexus(nexus);
     // Remove enemies from ArrayList if they are dead
-    if (spawnedEnemies.get(e).isDead) {
-      goldList.add(new Gold(spawnedEnemies.get(e), spawnedEnemies.get(e).goldAmount));//add a gold when he dies
+    if (en.isDead) {
+      goldList.add(new Gold(en, en.goldAmount));//add a gold when he dies
       spawnedEnemies.remove(e);
     }
   }
@@ -102,7 +105,7 @@ void draw() {
   for (int g = 0; g < goldList.size(); g++) {
     goldList.get(g).display();
     // Check for gold collision
-    if (player.collidesWithGold(goldList.get(g))) { //if you touch the gold
+    if (player.collidesWithObject(goldList.get(g))) { //if you touch the gold
       //System.out.println(player.money);
       player.money = player.money + goldList.get(g).amount; //add it to ur money
       goldList.remove(g); //remove it from the list
