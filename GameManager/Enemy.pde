@@ -54,7 +54,7 @@ class Enemy extends PVector {
 
   void attackNexus(Nexus nexus) {
     // Attack Nexus
-    // Aggro raidus
+    // Switch target to nexus
     if (dist(this, nexus) < 150) {
        inRangeNexus = true;
        target = nexus;
