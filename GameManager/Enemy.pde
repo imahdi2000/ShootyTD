@@ -8,11 +8,11 @@ class Enemy extends PVector {
   int damage;
   int goldAmount;
   Boolean isDead;
-  Boolean inRangeNexus;
+  Boolean inRangeNexus; // player does not get attacked if target is nexus
   color c;
 
   Enemy(PVector newTarget) {
-    super(800, 300);
+    super(random(1200), random(720));
     dir = new PVector();
     target = newTarget;
     speed = 2;
@@ -47,16 +47,19 @@ class Enemy extends PVector {
   void attackPlayer(Player player) {
     // If it touches target (player --> smack smack)
     // Attack player
-    if (dist(this, target) < 15 && !inRangeNexus) {
+    if (dist(this, player) < 15 && !inRangeNexus) {
       player.takeDamage(damage);
     }
   }
 
   void attackNexus(Nexus nexus) {
     // Attack Nexus
-    if (dist(this, target) < 15) {
-       inRangeNexus = true; 
+    // Aggro raidus
+    if (dist(this, nexus) < 150) {
+       inRangeNexus = true;
+       target = nexus;
     }
+    
     if (inRangeNexus) {
       nexus.takeDamage(damage);
     }

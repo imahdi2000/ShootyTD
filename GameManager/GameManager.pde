@@ -38,7 +38,9 @@ void setup() {
 
   ////spawned one enemy below for testing, remove later
   Enemy dummyEnemy = new Enemy(player);
+  Enemy dummy2 = new Enemy(player);
   spawnedEnemies.add(dummyEnemy);
+  spawnedEnemies.add(dummy2);
 }
 
 void draw() {
@@ -88,14 +90,15 @@ void draw() {
 
   // Display and move bullets
   for (int b = 0; b < bullets.size(); b++) {
-    bullets.get(b).display();
-    bullets.get(b).move();
+    Bullet bu = bullets.get(b);
+    bu.display();
+    bu.move();
     // Check enemy collision
     for (int e = 0; e < spawnedEnemies.size(); e++) {
-      if (bullets.get(b).collidesWithEnemy(spawnedEnemies.get(e))) {
+      if (bu.collidesWithEnemy(spawnedEnemies.get(e))) {
         // Remove bullets after dealing damage to enemy
         spawnedEnemies.get(e).takeDamage(10);
-        bullets.remove(bullets.get(b));
+        bullets.remove(bu);
         //System.out.println(spawnedEnemies.get(e).isDead);
       }
     }

@@ -25,6 +25,6 @@ class Bullet extends PVector {
   boolean collidesWithEnemy(Enemy enemy) {
     float d = dist(this, enemy);
     //System.out.println(d);
-    return  d <= 10;
+    return  d <= 20;
   }
 }

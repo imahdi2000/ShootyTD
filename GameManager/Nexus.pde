@@ -26,7 +26,7 @@ class Nexus extends PVector {
       // Outline
       stroke(0);
       fill(255, 0, 0);
-      rect(x - 25, y - 25, 50, 5);
+      rect(x - 40, y - 40, 80, 7);
 
       // Bar
       float drawWidth = (float(currentHP) / startingHP) * 80;

@@ -75,6 +75,12 @@ Ish::
 -worked on weapons (created basic weapons to add to shop)
 ==============================================================
 
+2017-05-24
+--------------------------------------------------------------
+Marcus, Xing Tao :: Started working on enemy attacking
+Marcus :: Enemies switch target to nexus if in range
+==============================================================
+
 yyyy-mm-dd
 --------------------------------------------------------------
 <Member> :: <Thing member did.>
