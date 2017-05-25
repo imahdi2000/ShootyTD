@@ -11,6 +11,7 @@ class Player extends PVector {
 
   Player() {
     super(600, 300);
+    weapons = new ArrayList<Weapon>();
     dir = new PVector();
     speed = 3;
     startingHP = 100;
@@ -82,8 +83,8 @@ class Player extends PVector {
   void setMoney(int cost) {
     money = money - cost;
   }
-  
-  void setWeapons(Weapon pewpew){
-   weapons.add(pewpew); 
+
+  void setWeapons(Weapon pewpew) {
+    weapons.add(pewpew);
   }
 }

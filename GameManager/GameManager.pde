@@ -10,6 +10,7 @@ Nexus nexus;
 ArrayList<Bullet> bullets;
 ArrayList<Enemy> spawnedEnemies;
 ArrayList<Gold> goldList;
+Shop shop;
 /*
  Shop shop;
  ArrayList<Enemy> queuedEnemies;
@@ -35,6 +36,7 @@ void setup() {
   bullets = new ArrayList<Bullet>();
   spawnedEnemies = new ArrayList<Enemy>();
   goldList = new ArrayList<Gold>(); 
+  shop = new Shop();
 
   ////spawned one enemy below for testing, remove later
   Enemy dummyEnemy = new Enemy(player);
@@ -53,6 +55,7 @@ void draw() {
   // Display
   player.display();
   nexus.display();
+  shop.display();
 
   // Movement
   player.move();

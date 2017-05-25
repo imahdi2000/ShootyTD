@@ -79,6 +79,7 @@ Ish::
 --------------------------------------------------------------
 Marcus, Xing Tao :: Started working on enemy attacking
 Marcus :: Enemies switch target to nexus if in range
+Ish:: Setting Up Shop, Able to buy weapons in exchange for dinero, (trying to fix time delay)
 ==============================================================
 
 yyyy-mm-dd
