@@ -14,7 +14,7 @@ class Turret extends PVector{
      range = 5.5;
   }
 
-  void takeDamage(int dam) {
+  void takeDamage(int damage) {
   }
 
   boolean enemyInRange() {

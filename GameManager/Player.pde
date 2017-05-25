@@ -6,6 +6,7 @@ class Player extends PVector {
   int currentHP;
   int money;
   ArrayList<Weapon> weapons;
+  int currentWeapon;
   boolean isDead;
   color c;
 
@@ -17,7 +18,8 @@ class Player extends PVector {
     startingHP = 100;
     currentHP = 100;
     money = 0;
-    //weapons = new ArrayList<Weapon>();
+    weapons = new ArrayList<Weapon>();
+    currentWeapon = 0;
     isDead = false;
     c = color(102, 255, 102);
   }
@@ -80,11 +82,19 @@ class Player extends PVector {
     return money;
   }
 
-  void setMoney(int cost) {
-    money = money - cost;
+  void decreaseMoney(int cost) {
+    money -= cost;
   }
 
-  void setWeapons(Weapon pewpew) {
+  void addWeapon(Weapon pewpew) {
     weapons.add(pewpew);
+  }
+  
+  void setCurrentWeapon(int weapNum) {
+    currentWeapon = weapNum;  
+  }
+  
+  Weapon getCurrentWeapon() {
+    return weapons.get(currentWeapon); 
   }
 }

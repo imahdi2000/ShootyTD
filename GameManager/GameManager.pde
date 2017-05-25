@@ -12,7 +12,6 @@ ArrayList<Enemy> spawnedEnemies;
 ArrayList<Gold> goldList;
 Shop shop;
 /*
- Shop shop;
  ArrayList<Enemy> queuedEnemies;
  ArrayList<Turret> turrets;
  ArrayList<Trap> traps;
@@ -66,7 +65,7 @@ void draw() {
   ellipse(mouse.x, mouse.y, 5, 5);
 
   // Framecount is the firerate (change to weapon's firerate later)
-  if (mousePressed && frameCount % 15 == 0) {
+  if (mousePressed && frameCount % player.getCurrentWeapon().getFireRate() == 0) {
     PVector dir = PVector.sub(mouse, player); // Direction
     dir.normalize(); // Unit vector
     dir.mult(8); // Bullet speed
@@ -144,6 +143,12 @@ void keyReleased() {
   } else if (key == 'a' || key == 'd' || keyCode == LEFT || keyCode == RIGHT) {
     player.setDirX(0);
   }
+}
+
+// Shop
+void mouseClicked() {
+  //System.out.println("Triggered");
+  shop.buy();
 }
 
 void saveHighscore() {

@@ -82,6 +82,11 @@ Marcus :: Enemies switch target to nexus if in range
 Ish:: Setting Up Shop, Able to buy weapons in exchange for dinero, (trying to fix time delay)
 ==============================================================
 
+2017-05-25
+--------------------------------------------------------------
+Marcus, Xing Tao, Ish :: Worked on buying items from the shop
+==============================================================
+
 yyyy-mm-dd
 --------------------------------------------------------------
 <Member> :: <Thing member did.>

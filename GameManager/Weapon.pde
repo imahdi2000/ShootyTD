@@ -1,39 +1,34 @@
-class Weapon{
+class Weapon {
+
+  int damage;
+  int price;
+  int fireRate;
+  double range;
+  String name;
   
- int damage;
- int price;
- double range;
- String names;
- 
- Weapon(String name){
-   names = name;
-  if (name == "blaster"){
-   damage = 10;
-   price = 10;
-   range = 100;
+  Weapon(String nName, int nDamage, int nPrice, int nFireRate, double nRange) {
+    name = nName;
+    damage = nDamage;
+    price = nPrice;
+    fireRate = nFireRate;
+    range = nRange;
   }
-  if(name == "laser"){
-   damage = 7;
-   price = 15;
-   range = 1000;
+
+  int getPrice() {
+    return price;
   }
-  if (name == "banana"){
-   damage = 50;
-   price = 20;
-   range = 5;
+
+  int getFireRate() {
+    return fireRate;  
   }
- }
- 
- int getPrice(){
-   return price; 
- }
- 
- void shoot(){
-   
- }
- 
- void display(){
-   
- }
   
+  String getName() {
+    return name;  
+  }
+  
+  void shoot() {
+  }
+
+  void display() {
+  }
 }
