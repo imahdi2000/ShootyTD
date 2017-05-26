@@ -10,10 +10,10 @@ Nexus nexus;
 ArrayList<Bullet> bullets;
 ArrayList<Enemy> spawnedEnemies;
 ArrayList<Gold> goldList;
+ArrayList<Turret> turrets;
 Shop shop;
 /*
  ArrayList<Enemy> queuedEnemies;
- ArrayList<Turret> turrets;
  ArrayList<Trap> traps;
  */
 int waveInterval;
@@ -35,6 +35,7 @@ void setup() {
   bullets = new ArrayList<Bullet>();
   spawnedEnemies = new ArrayList<Enemy>();
   goldList = new ArrayList<Gold>(); 
+  turrets = new ArrayList<Turret>();
   shop = new Shop();
 
   ////spawned one enemy below for testing, remove later
@@ -42,6 +43,10 @@ void setup() {
   Enemy dummy2 = new Enemy(player);
   spawnedEnemies.add(dummyEnemy);
   spawnedEnemies.add(dummy2);
+
+  //spawn a turret for testing
+  Turret dummyTurret = new Turret(dummyEnemy);
+  turrets.add(dummyTurret);
 }
 
 void draw() {
@@ -117,45 +122,63 @@ void draw() {
       //System.out.println(player.money);
     }
   }
-}
 
+  // Display turrets
+  for (int t = 0; t < turrets.size(); t++) {
+    turrets.get(t).display();
+    if (!turrets.get(t).isTargetDead()) {
+      if (frameCount % turrets.get(t).getFireRate() == 0 && turrets.get(t).enemyInRange()) {
+        PVector dir = PVector.sub(turrets.get(t).target, turrets.get(t)); // Direction
+        dir.normalize(); // Unit vector
+        dir.mult(8); // Bullet speed
 
-// Player movement - move
-void keyPressed() {
-  if (key == 'w' || keyCode == UP) { // Up
-    player.setDirY(-3);
-  }
-  if (key == 'a' || keyCode == LEFT) { // Left
-    player.setDirX(-3);
-  }
-  if (key == 's' || keyCode == DOWN) { // Down
-    player.setDirY(3);
-  }
-  if (key == 'd' || keyCode == RIGHT) { // Right
-    player.setDirX(3);
-  }
-}
-
-// Player movement - stop moving
-void keyReleased() {
-  if (key == 'w' || key == 's' || keyCode == UP || keyCode == DOWN) { 
-    player.setDirY(0);
-  } else if (key == 'a' || key == 'd' || keyCode == LEFT || keyCode == RIGHT) {
-    player.setDirX(0);
+        // Add bullet to arraylist
+        Bullet b = new Bullet(turrets.get(t), dir);
+        bullets.add(b);
+      }
+    } else {
+      
+    }
   }
 }
 
-// Shop
-void mouseClicked() {
-  //System.out.println("Triggered");
-  shop.buy();
-}
 
-void saveHighscore() {
-}
+  // Player movement - move
+  void keyPressed() {
+    if (key == 'w' || keyCode == UP) { // Up
+      player.setDirY(-3);
+    }
+    if (key == 'a' || keyCode == LEFT) { // Left
+      player.setDirX(-3);
+    }
+    if (key == 's' || keyCode == DOWN) { // Down
+      player.setDirY(3);
+    }
+    if (key == 'd' || keyCode == RIGHT) { // Right
+      player.setDirX(3);
+    }
+  }
 
-void gameOver() {
-}
+  // Player movement - stop moving
+  void keyReleased() {
+    if (key == 'w' || key == 's' || keyCode == UP || keyCode == DOWN) { 
+      player.setDirY(0);
+    } else if (key == 'a' || key == 'd' || keyCode == LEFT || keyCode == RIGHT) {
+      player.setDirX(0);
+    }
+  }
 
-void restartGame() {
-}
+  // Shop
+  void mouseClicked() {
+    //System.out.println("Triggered");
+    shop.buy();
+  }
+
+  void saveHighscore() {
+  }
+
+  void gameOver() {
+  }
+
+  void restartGame() {
+  }

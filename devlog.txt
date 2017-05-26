@@ -85,6 +85,7 @@ Ish:: Setting Up Shop, Able to buy weapons in exchange for dinero, (trying to fi
 2017-05-25
 --------------------------------------------------------------
 Marcus, Xing Tao, Ish :: Worked on buying items from the shop
+Xing Tao :: Worked on towers
 ==============================================================
 
 yyyy-mm-dd

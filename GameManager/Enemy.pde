@@ -75,6 +75,10 @@ class Enemy extends PVector {
     }
   }
 
+  boolean isDead() {
+    return isDead;
+  }
+
   // Health Bar
   void healthBar() {
     if (currentHP >= 0) {
