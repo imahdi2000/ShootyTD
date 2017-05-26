@@ -3,7 +3,7 @@ class Shop {
   ArrayList<Weapon> weapons;
   ArrayList<Turret> turrets;
   ArrayList<Trap> traps;
-  // Temporary
+  // Temporary (we will add button class w positions)
   float x = 525;
   float y = 600;
   float w = 150;
@@ -17,6 +17,7 @@ class Shop {
     Weapon banana = new Weapon("banana", 50, 20, 2, 1000);
     weapons.add(blaster);
     
+    // Temp
     player.addWeapon(blaster);
     
     weapons.add(laser);
@@ -40,7 +41,7 @@ class Shop {
   }
 
   void display() {
-    rect(x, y, w, h);
     fill(255);
+    rect(x, y, w, h);
   }
 }

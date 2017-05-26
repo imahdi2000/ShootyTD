@@ -1,11 +1,12 @@
 class Turret extends PVector {
+
   int startingHP; 
   int currentHP; 
   int damage;
   int price;
   double fireRate;
   double range;
-  Enemy target;
+  PVector target;
   //PVector loc;
 
   Turret(Enemy newTarget) {
@@ -23,18 +24,28 @@ class Turret extends PVector {
   }
 
   boolean enemyInRange() {
-    return (dist(this, target) < range);
+    return dist(this, target) < range;
   }
 
   void shoot() {
   }
 
   boolean isTargetDead() {
-    return target.isDead();
+    return ((Enemy)target).isDead();
   }
 
   double getFireRate() {
     return fireRate;
+  } 
+
+  void findTarget(ArrayList<Enemy> enemies) {
+    PVector newTarget = target;
+    for (int e = 0; e < enemies.size(); e++) {
+      if (dist(this, enemies.get(e)) < dist(this, newTarget)) {
+        newTarget = enemies.get(0);
+      }
+    }
+    target = newTarget;
   }
 
   void display() {

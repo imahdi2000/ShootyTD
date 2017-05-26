@@ -25,6 +25,7 @@ MID-DEVELOPMENT DESIGN CHANGES
 - We planned on using x,y coordinates for all the Objects (ex: Player, Bullets, etc).
 However, we realized it makes more sense to use PVectors than only x,y coordinates because vectors already have
 x,y components and have additional methods to easily calculate the magnitude of the vector.
+- We decided to only check for the closest enemy when a turret is finding an enemy to target instead of storing enemies in range of the turret in a priority queue because a priority queue is unecessary
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -86,6 +87,12 @@ Ish:: Setting Up Shop, Able to buy weapons in exchange for dinero, (trying to fi
 --------------------------------------------------------------
 Marcus, Xing Tao, Ish :: Worked on buying items from the shop
 Xing Tao :: Worked on towers
+==============================================================
+
+2017-05-26
+--------------------------------------------------------------
+Marcus, Xing Tao :: Fixed tower targeting after the first enemy is killed
+Ish :: Worked on shop
 ==============================================================
 
 yyyy-mm-dd
