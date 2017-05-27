@@ -1,4 +1,5 @@
-class Trap{
+class Trap {
+  
  int damage;
  int price;
  

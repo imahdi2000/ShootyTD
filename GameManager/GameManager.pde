@@ -127,24 +127,20 @@ void draw() {
   for (int t = 0; t < turrets.size(); t++) {
     turrets.get(t).display();
     turrets.get(t).findTarget(spawnedEnemies);
-    if (!turrets.get(t).isTargetDead()) {
-      if (frameCount % turrets.get(t).getFireRate() == 0 && turrets.get(t).enemyInRange()) {
-        PVector dir = PVector.sub(turrets.get(t).target, turrets.get(t)); // Direction
-        dir.normalize(); // Unit vector
-        dir.mult(8); // Bullet speed
+    if (frameCount % turrets.get(t).getFireRate() == 0 && turrets.get(t).enemyInRange() && !turrets.get(t).isTargetDead()) {
+      PVector dir = PVector.sub(turrets.get(t).target, turrets.get(t)); // Direction
+      dir.normalize(); // Unit vector
+      dir.mult(8); // Bullet speed
 
-        // Add bullet to arraylist
-        Bullet b = new Bullet(turrets.get(t), dir);
-        bullets.add(b);
-      }
-    } else {
-      turrets.get(t).findTarget(spawnedEnemies);
+      // Add bullet to arraylist
+      Bullet b = new Bullet(turrets.get(t), dir);
+      bullets.add(b);
     }
   }
 }
 
 
-// Play      vement - move
+// Player movement
 void keyPressed() {
   if (key == 'w' || keyCode == UP) { // Up
     player.setDirY(-3);

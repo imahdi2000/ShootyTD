@@ -95,6 +95,11 @@ Marcus, Xing Tao :: Fixed tower targeting after the first enemy is killed
 Ish :: Worked on shop
 ==============================================================
 
+2017-05-27
+--------------------------------------------------------------
+Marcus :: Turret now shoots closest enemy
+==============================================================
+
 yyyy-mm-dd
 --------------------------------------------------------------
 <Member> :: <Thing member did.>

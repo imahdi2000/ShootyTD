@@ -16,7 +16,7 @@ class Turret extends PVector {
     damage = 5;
     price = 10;
     fireRate = 30;
-    range = 200;
+    range = 250;
     target = newTarget;
   }
 
@@ -42,7 +42,7 @@ class Turret extends PVector {
     PVector newTarget = target;
     for (int e = 0; e < enemies.size(); e++) {
       if (dist(this, enemies.get(e)) < dist(this, newTarget)) {
-        newTarget = enemies.get(0);
+        newTarget = enemies.get(e);
       }
     }
     target = newTarget;
