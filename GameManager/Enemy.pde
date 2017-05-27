@@ -51,7 +51,15 @@ class Enemy extends PVector {
       player.takeDamage(damage);
     }
   }
-
+  
+  void attackTurret(Turret turret) {
+    // If it touches target (turret --> smack smack)
+    // Attack turret
+    if (dist(this, turret) < 15) {
+      turret.takeDamage(damage);
+    }
+  }
+  
   void attackNexus(Nexus nexus) {
     // Attack Nexus
     // Switch target to nexus

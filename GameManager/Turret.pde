@@ -21,6 +21,7 @@ class Turret extends PVector {
   }
 
   void takeDamage(int damage) {
+    currentHP -= damage;
   }
 
   boolean enemyInRange() {
@@ -48,7 +49,23 @@ class Turret extends PVector {
     target = newTarget;
   }
 
+  // Health Bar
+  void healthBar() {
+    if (currentHP >= 0) {
+      // Outline
+      stroke(0);
+      fill(255, 0, 0);
+      rect(x - 25, y - 25, 50, 5);
+
+      // Bar
+      float drawWidth = (float(currentHP) / startingHP) * 50;
+      fill(0, 255, 0); // Green
+      rect(x - 25, y - 25, drawWidth, 5);
+    }
+  }
+  
   void display() {
+    healthBar();
     imageMode(CENTER);
     image(turr, x, y);
   }
