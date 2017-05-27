@@ -98,6 +98,7 @@ Ish :: Worked on shop
 2017-05-27
 --------------------------------------------------------------
 Marcus :: Turret now shoots closest enemy
+Xing Tao :: created grid lines
 ==============================================================
 
 yyyy-mm-dd
