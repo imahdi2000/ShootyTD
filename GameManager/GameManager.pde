@@ -61,6 +61,22 @@ void draw() {
   nexus.display();
   shop.display();
 
+  //Make a grid
+  int spacing = 40; //how big the boxes are
+  
+  int x = 0; //lines
+  while (x < width) {
+    line(x, 0, x, height);
+    x = x + spacing;
+  }
+  
+  int y = 0; //more lines
+  while (y < height) {
+    line(0,y,width,y);
+    y = y + spacing;
+  }
+      
+
   // Movement
   player.move();
 
