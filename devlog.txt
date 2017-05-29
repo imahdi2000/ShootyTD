@@ -101,6 +101,11 @@ Marcus :: Turret now shoots closest enemy
 Xing Tao :: created grid lines
 ==============================================================
 
+2017-05-29
+--------------------------------------------------------------
+Xing Tao :: fixed grid lines, implemented hovering over a grid and placing a tower
+==============================================================
+
 yyyy-mm-dd
 --------------------------------------------------------------
 <Member> :: <Thing member did.>

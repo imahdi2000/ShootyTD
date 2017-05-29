@@ -19,6 +19,11 @@ Shop shop;
 int waveInterval;
 boolean gameOver;
 int highscore;
+static float cellSize = 1200 / 20; //how big the cells are
+Cell[][] Grid = new Cell[20][13];
+Cell hoverCell;
+Enemy dummy1;
+Enemy dummy2;
 
 void setup() {
   // Canvas size
@@ -39,14 +44,21 @@ void setup() {
   shop = new Shop();
 
   //spawned one enemy below for testing, remove later
-  Enemy dummy1 = new Enemy(player);
-  Enemy dummy2 = new Enemy(player);
+  dummy1 = new Enemy(player);
+  dummy2 = new Enemy(player);
   spawnedEnemies.add(dummy1);
   spawnedEnemies.add(dummy2);
 
   //spawn a turret for testing
-  Turret dummyTurret = new Turret(dummy1);
+  Turret dummyTurret = new Turret(dummy1, width/2, height/2 + 100);
   turrets.add(dummyTurret);
+
+  //create grid
+  for (int x = 0; x <Grid.length; x++) {
+    for (int y = 0; y < Grid[0].length; y ++) {
+      Grid[x][y] = new Cell(x, y);
+    }
+  }
 }
 
 void draw() {
@@ -61,21 +73,23 @@ void draw() {
   nexus.display();
   shop.display();
 
+
+  /*
   //Make a grid
-  int spacing = 40; //how big the boxes are
-  
-  int x = 0; //lines
-  while (x < width) {
-    line(x, 0, x, height);
-    x = x + spacing;
-  }
-  
-  int y = 0; //more lines
-  while (y < height) {
-    line(0,y,width,y);
-    y = y + spacing;
-  }
-      
+   int spacing = 40; //how big the boxes are
+   
+   int x = 0; //lines
+   while (x < width) {
+   line(x, 0, x, height);
+   x = x + spacing;
+   }
+   
+   int y = 0; //more lines
+   while (y < height) {
+   line(0,y,width,y);
+   y = y + spacing;
+   }
+   */
 
   // Movement
   player.move();
@@ -153,7 +167,55 @@ void draw() {
       bullets.add(b);
     }
   }
+
+  //check mouse
+  mouseCheck();
 }
+
+void mouseCheck() {
+  int x = (int)(mouseX / cellSize);
+  int y = (int)(mouseY / cellSize);
+
+  if (x < Grid.length && y < Grid[0].length) {
+    hoverCell = Grid[x][y];
+    hoverCell.outline();
+  }
+}
+
+
+class Cell {
+  int x;
+  int y;
+
+  Turret occupant = null;
+
+  void build(Turret t) {
+    if (buildable()) {
+      occupant = t;
+    }
+    turrets.add(t);
+  }
+
+  boolean buildable() {
+    if (occupant == null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  void outline() {
+    noFill();
+    stroke(#00FF00);
+    rect(x * cellSize, y * cellSize, cellSize, cellSize);
+  }
+
+  Cell(int newX, int newY) {
+    x = newX;
+    y = newY;
+  }
+}
+
 
 
 // Player movement
@@ -185,6 +247,14 @@ void keyReleased() {
 void mouseClicked() {
   //System.out.println("Triggered");
   shop.buy();
+}
+
+void mousePressed() {
+  if (hoverCell != null) {
+    if (hoverCell.buildable()) {
+      hoverCell.build(new Turret(dummy1, mouseX, mouseY));
+    }
+  }
 }
 
 void saveHighscore() {

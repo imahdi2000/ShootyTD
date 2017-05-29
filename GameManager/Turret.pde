@@ -9,8 +9,8 @@ class Turret extends PVector {
   PVector target;
   //PVector loc;
 
-  Turret(Enemy newTarget) {
-    super(width / 2, height / 2 - 100);
+  Turret(Enemy newTarget, int newX, int newY) {
+    super(newX, newY);
     startingHP = 50;
     currentHP = 50;
     damage = 5;
