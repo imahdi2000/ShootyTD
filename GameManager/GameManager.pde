@@ -12,6 +12,7 @@ ArrayList<Enemy> spawnedEnemies;
 ArrayList<Gold> goldList;
 ArrayList<Turret> turrets;
 Shop shop;
+Button button1;
 /*
  ArrayList<Enemy> queuedEnemies;
  ArrayList<Trap> traps;
@@ -42,6 +43,7 @@ void setup() {
   goldList = new ArrayList<Gold>(); 
   turrets = new ArrayList<Turret>();
   shop = new Shop();
+  button1 = new Button();
 
   //spawned one enemy below for testing, remove later
   dummy1 = new Enemy(player);
@@ -72,7 +74,7 @@ void draw() {
   player.display();
   nexus.display();
   shop.display();
-
+  button1.display();
 
   /*
   //Make a grid
