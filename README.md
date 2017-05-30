@@ -8,7 +8,7 @@ The player spawns next to the nexus and enemies are added to an ArrayList of ene
 
 ## Launch Instructions
 
-Download [Processing 3.3.x](https://processing.org/download/)
+Download & install [Processing 3.3.x](https://processing.org/download/)
 
 
 Clone this repo
