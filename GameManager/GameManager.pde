@@ -19,8 +19,8 @@ Shop shop;
 int waveInterval;
 boolean gameOver;
 int highscore;
-static float cellSize = 1200 / 20; //how big the cells are
-Cell[][] Grid = new Cell[20][13];
+static float cellSize = 30; //how big the cells are
+Cell[][] Grid = new Cell[40][24];
 Cell hoverCell;
 Enemy dummy1;
 Enemy dummy2;
@@ -252,7 +252,7 @@ void mouseClicked() {
 void mousePressed() {
   if (hoverCell != null) {
     if (hoverCell.buildable()) {
-      hoverCell.build(new Turret(dummy1, mouseX, mouseY));
+      hoverCell.build(new Turret(dummy1, hoverCell.x * 30 + 15, hoverCell.y * 30 + 15));
     }
   }
 }
