@@ -18,6 +18,11 @@ $ git clone git@github.com:imahdi2000/ShootyTD.git
 
 Go into the folder GameManager
 ```
+$ cd ShootyTD/GameManager
+```
+
+Run the program
+```
 $ processing GameManager.pde
 ```
 
