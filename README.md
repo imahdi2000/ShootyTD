@@ -17,8 +17,8 @@ $ git clone git@github.com:imahdi2000/ShootyTD.git
 ```
 
 Go into the folder GameManager
-'''
-processing GameManager.pde
-'''
+```
+$ processing GameManager.pde
+```
 
 Click the play button in the top-left corner
