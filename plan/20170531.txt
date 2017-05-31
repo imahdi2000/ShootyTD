@@ -19,7 +19,7 @@ $$/       $$$$$$$$/ $$/   $$/ $$/   $$/
 
 Which jobs are most crucial?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MVP:
+Mvp:
 - Nexus in the center of the map (completed)
 - Player is able to move with WASD and shoot with mouse click (completed)
 - Enemies spawn in waves and target the player or nexus based on vicinity
