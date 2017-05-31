@@ -12,7 +12,7 @@ ArrayList<Enemy> spawnedEnemies;
 ArrayList<Gold> goldList;
 ArrayList<Turret> turrets;
 Shop shop;
-Button button1;
+Button button1; //turret one
 /*
  ArrayList<Enemy> queuedEnemies;
  ArrayList<Trap> traps;
@@ -25,6 +25,7 @@ Cell[][] Grid = new Cell[40][24];
 Cell hoverCell;
 Enemy dummy1;
 Enemy dummy2;
+boolean buying;
 
 void setup() {
   // Canvas size
@@ -44,6 +45,7 @@ void setup() {
   turrets = new ArrayList<Turret>();
   shop = new Shop();
   button1 = new Button();
+  buying = false;
 
   //spawned one enemy below for testing, remove later
   dummy1 = new Enemy(player);
@@ -75,23 +77,6 @@ void draw() {
   nexus.display();
   shop.display();
   button1.display();
-
-  /*
-  //Make a grid
-   int spacing = 40; //how big the boxes are
-   
-   int x = 0; //lines
-   while (x < width) {
-   line(x, 0, x, height);
-   x = x + spacing;
-   }
-   
-   int y = 0; //more lines
-   while (y < height) {
-   line(0,y,width,y);
-   y = y + spacing;
-   }
-   */
 
   // Movement
   player.move();
@@ -170,7 +155,7 @@ void draw() {
     }
   }
 
-  //check mouse
+  //check mouse for hovercell
   mouseCheck();
 }
 
@@ -184,7 +169,7 @@ void mouseCheck() {
   }
 }
 
-
+//Grid class
 class Cell {
   int x;
   int y;
@@ -192,10 +177,11 @@ class Cell {
   Turret occupant = null;
 
   void build(Turret t) {
-    if (buildable()) {
+    if (buildable() && buying) {
       occupant = t;
+      turrets.add(t);
+      buying = false;
     }
-    turrets.add(t);
   }
 
   boolean buildable() {
@@ -249,6 +235,10 @@ void keyReleased() {
 void mouseClicked() {
   //System.out.println("Triggered");
   shop.buy();
+  if (button1.pressed()) {
+    buying = true;
+    System.out.println("Triggered");
+  }
 }
 
 void mousePressed() {

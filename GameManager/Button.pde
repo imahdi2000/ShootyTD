@@ -18,7 +18,16 @@ class Button {
     name = n; 
     price = p; 
     damage = d;
-    c = color(0,255,0);
+    c = color(0, 255, 0);
+  }
+
+  boolean pressed() {
+    // If mouse is hovering over CORRESPONDING button
+    if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   void display() { 
