@@ -1,8 +1,7 @@
-class Trap {
+class Trap extends PVector {
   
  int damage;
  int price;
- 
  
  void dealDamage(){
    

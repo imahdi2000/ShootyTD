@@ -24,7 +24,11 @@ class Cell {
 
   void outline() {
     noFill();
-    stroke(#00FF00);
+    if (buildable()) {
+      stroke(#00FF00);
+    } else {
+      stroke(#FF0000);
+    }
     rect(x * cellSize, y * cellSize, cellSize, cellSize);
   }
 

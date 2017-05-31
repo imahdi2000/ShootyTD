@@ -59,6 +59,7 @@ void setup() {
   Turret dummyTurret = new Turret(dummy1, width/2, height/2 + 100);
   turrets.add(dummyTurret);
 
+  System.out.println(dummyTurret.price);
   //create grid
   for (int x = 0; x <Grid.length; x++) {
     for (int y = 0; y < Grid[0].length; y ++) {
