@@ -11,6 +11,10 @@ class Trap extends PVector {
    return false;
  }
  
+ int getPrice() {
+   return price;
+ }
+ 
  void display(){
    
  }

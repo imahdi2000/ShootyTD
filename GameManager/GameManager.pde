@@ -28,6 +28,7 @@ Cell hoverCell;
 Enemy dummy1;
 Enemy dummy2;
 boolean buying;
+boolean buyingTrap;
 
 void setup() {
   // Canvas size
@@ -48,6 +49,7 @@ void setup() {
   shop = new Shop();
   button1 = new Button();
   buying = false;
+  buyingTrap = false;
 
   //spawned one enemy below for testing, remove later
   dummy1 = new Enemy(player);

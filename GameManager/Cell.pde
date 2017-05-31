@@ -4,8 +4,9 @@ class Cell {
   int y;
 
   Turret occupant = null;
+  Stack<Trap> traps = null;
 
-  void build(Turret t) {
+  void build(Turret t) {//build turret
     if (buildable() && buying) {
       occupant = t;
       turrets.add(t);
@@ -14,7 +15,23 @@ class Cell {
     }
   }
 
-  boolean buildable() {
+  void build(Trap t) {//build trap
+    if (trapBuildable() && buyingTrap) {
+      traps.push(t);
+      buyingTrap = false;
+      player.decreaseMoney(t.getPrice());
+    }
+  }
+
+  boolean buildable() {//turret placable
+    if (occupant == null && traps == null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  boolean trapBuildable() {//trap placable
     if (occupant == null) {
       return true;
     } else {
