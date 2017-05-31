@@ -1,20 +1,21 @@
 class Button {
   String name;
-  String price;
-  String damage;
+  int price;
+  int damage;
   float x = 750;
   float y = 600;
   float w = 150;
   float h = 80;
   color c;
+  Object obj;
 
   Button() {
     name = "";
-    price = "0";
-    damage = "0";
+    price = 0;
+    damage = 0;
   }
 
-  Button(String n, String p, String d) {
+  Button(String n, int p, int d) {
     name = n; 
     price = p; 
     damage = d;

@@ -9,6 +9,7 @@ class Player extends PVector {
   int currentWeapon;
   boolean isDead;
   color c;
+  ArrayList<Object> inventory;
 
   Player() {
     super(600, 300);
@@ -22,6 +23,7 @@ class Player extends PVector {
     currentWeapon = 0;
     isDead = false;
     c = color(102, 255, 102);
+    inventory = new ArrayList<Object>();
   }
 
   void setDirX(float x) {

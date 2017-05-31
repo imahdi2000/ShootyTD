@@ -64,6 +64,10 @@ class Turret extends PVector {
     }
   }
   
+  int getPrice(){
+   return price; 
+  }
+  
   void display() {
     healthBar();
     imageMode(CENTER);

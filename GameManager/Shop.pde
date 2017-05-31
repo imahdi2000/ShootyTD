@@ -1,5 +1,5 @@
 class Shop {
-  
+  ArrayList<Button> button;
   ArrayList<Weapon> weapons;
   ArrayList<Turret> turrets;
   ArrayList<Trap> traps;
@@ -11,6 +11,10 @@ class Shop {
 
   // Setup Shop
   Shop() {
+    button = new ArrayList<Button>();
+    Button blast = new Button("blaster", 10,10);
+    button.add(blast);
+    
     weapons = new ArrayList<Weapon>();
     Weapon blaster = new Weapon("blaster", 10, 10, 15, 100);
     Weapon laser = new Weapon("laser", 7, 15, 10, 500);

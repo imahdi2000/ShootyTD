@@ -13,6 +13,8 @@ ArrayList<Gold> goldList;
 ArrayList<Turret> turrets;
 Shop shop;
 Button button1; //turret one
+
+
 /*
  ArrayList<Enemy> queuedEnemies;
  ArrayList<Trap> traps;
@@ -181,6 +183,7 @@ class Cell {
       occupant = t;
       turrets.add(t);
       buying = false;
+      player.decreaseMoney(t.getPrice());
     }
   }
 

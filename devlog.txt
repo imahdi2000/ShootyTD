@@ -110,7 +110,7 @@ Xing Tao :: fixed grid lines, implemented hovering over a grid and placing a tow
 --------------------------------------------------------------
 Marcus :: Fixed UML and flow chart
 Xing Tao :: Fixed tower placement and plan, made button functionality for building a tower
-Ish :: Worked on buttons
+Ish :: Worked on buttons + shop setup
 ==============================================================
 
 yyyy-mm-dd
