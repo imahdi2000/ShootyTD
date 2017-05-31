@@ -106,6 +106,13 @@ Xing Tao :: created grid lines
 Xing Tao :: fixed grid lines, implemented hovering over a grid and placing a tower
 ==============================================================
 
+2017-05-30
+--------------------------------------------------------------
+Marcus :: Fixed UML and flow chart
+Xing Tao :: Fixed tower placement
+Ish :: Worked on buttons
+==============================================================
+
 yyyy-mm-dd
 --------------------------------------------------------------
 <Member> :: <Thing member did.>
