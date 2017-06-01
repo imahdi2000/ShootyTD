@@ -8,6 +8,9 @@ class Button {
   color c;
   Weapon weapon;
   boolean hasweapon = false;
+  boolean hasTurret = false;
+  boolean hasTrap = false;  
+  boolean triggered = false;
 
   Button(float x1, float y1, float w1, float h1) {
     price = 0;
@@ -31,15 +34,14 @@ class Button {
     hasweapon = true;
   }
 
-  boolean pressed() {
+  void pressed() {
     // If mouse is hovering over CORRESPONDING button
     if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
       if (hasweapon == true) {
         hasweapon = false;
+      } else { 
+        buying = true;
       }
-      return true;
-    } else {
-      return false;
     }
   }
 

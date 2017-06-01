@@ -7,7 +7,7 @@ class Cell {
   Stack<Trap> traps = null;
 
   void build(Turret t) {//build turret
-    if (buildable() && buying) {
+    if (buildable()) {
       occupant = t;
       turrets.add(t);
       buying = false;

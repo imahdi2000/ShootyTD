@@ -12,7 +12,6 @@ ArrayList<Enemy> spawnedEnemies;
 ArrayList<Gold> goldList;
 ArrayList<Turret> turrets;
 Shop shop;
-Button button1; //turret one
 
 
 /*
@@ -47,7 +46,6 @@ void setup() {
   goldList = new ArrayList<Gold>(); 
   turrets = new ArrayList<Turret>();
   shop = new Shop();
-  button1 = new Button(100, 100, 100, 100);
   buying = false;
   buyingTrap = false;
 
@@ -81,7 +79,6 @@ void draw() {
   player.display();
   nexus.display();
   shop.display();
-  button1.display();
 
   // Movement
   player.move();
@@ -204,15 +201,22 @@ void keyReleased() {
 void mouseClicked() {
   //System.out.println("Triggered");
   shop.buy();
-  if (button1.pressed()) {
+  shop.pressed();
+  if (shop.button.get(3).triggered) {
     buying = true;
+    shop.button.get(3).triggered = false;
     System.out.println("Triggered");
+  }
+  if (shop.button.get(4).triggered) {
+    buyingTrap = true;
+    shop.button.get(3).triggered = false;
+    System.out.println("Triggered trap");
   }
 }
 
 void mousePressed() {
   if (hoverCell != null) {
-    if (hoverCell.buildable()) {
+    if (hoverCell.buildable() && buying) {
       hoverCell.build(new Turret(dummy1, hoverCell.x * 30 + 15, hoverCell.y * 30 + 15));
     }
   }
