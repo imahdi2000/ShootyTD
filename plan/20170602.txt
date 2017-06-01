@@ -1,0 +1,177 @@
+MonkeyBusiness
+Marcus Ng
+Xing Tao Shi
+Ishtiaque Mahdi
+pd 4
+---------------------
+ShootyTD
+
+ _______   __         ______   __    __ 
+/       \ /  |       /      \ /  \  /  |
+$$$$$$$  |$$ |      /$$$$$$  |$$  \ $$ |
+$$ |__$$ |$$ |      $$ |__$$ |$$$  \$$ |
+$$    $$/ $$ |      $$    $$ |$$$$  $$ |
+$$$$$$$/  $$ |      $$$$$$$$ |$$ $$ $$ |
+$$ |      $$ |_____ $$ |  $$ |$$ |$$$$ |
+$$ |      $$       |$$ |  $$ |$$ | $$$ |
+$$/       $$$$$$$$/ $$/   $$/ $$/   $$/ 
+==============================================================
+
+Which jobs are most crucial?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Mvp:
+- Nexus in the center of the map (completed)
+- Player is able to move with WASD and shoot with mouse click (completed)
+- Enemies spawn in waves and target the player or nexus based on vicinity
+- Player can kill enemies (completed)
+- Enemies drop gold on death (completed)
+- Shop with weapons the player can purchase (completed)
+- Gameover if the player or nexus dies
+- Nexus, player and enemy health bars are visible (completed)
+- Grid for tower placement (completed)
+
+Which components constitute core functionality (vs non-essential)?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Player movement and shooting (completed)
+- Enemy targeting and attacking (completed)
+- Bullets deal damage to enemies (completed)
+- Items purchasable (completed)
+
+Which components are prerequisites for others?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Bullets are necessary for the player and turret to shoot (completed)
+- Weapons are required for the player to deal damage (completed)
+- Shop requires weapons, turrets, or traps for the player to buy items/structures
+- Enemies require a player or structure to target during pathing (completed)
+- Gold requires an enemy to drop gold on death (completed)
+
+Which tasks can be delegated, and which must be collaboratively tackled?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Player Movement, Enemy AI, Placement of Structures, and Shop HUD should be
+approached together
+
+- Can be delegated:
+  - Game Manager
+  - Player shooting
+  - Enemy skeleton
+  - Enemies dropping gold
+  - Turret shooting and targeting
+  - Displaying health bars
+  - Gridding
+    - Turret creation
+    - Trap creation
+      - We plan on creating a grid on the screen to use for testing but when the traps/towers function properly, they can be removed.
+  - Graphics
+  - High scores
+
+What is the timeline, and how does it accommodate setbacks, course changes?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+We plan on finishing the MVP by May 27th. By testing the game and bug fixing over the
+weekend, we will be able to decide if we want to make any major changes to the game.
+Then we will work on the shop, turrets, traps, highscore, and placement until May 2nd. This gives
+us 3 days to polish the game and bug fix.
+
+Shop:
+/*
+- Create a GUI that displays the nexus' HP
+- Add buttons for the weapons
+  - Description
+  - Price
+- Add functionality
+*/
+
+- Accessible on the bottom of the screen where you will be able to purchase weapons, turrets and traps.
+
+Turrets:
+- Create an object that can automatically shoot enemies based on a queue proritized by distance
+- Add button to GUI that allows player to buy turret
+- Figure out how to place turret on map
+
+Trap:
+- Create an object that deals damage when an enemy walks on top of it
+- Add button to GUI that allows player to buy trap
+- Create stack based on position
+
+Highscore:
+- Calculate the score based on what wave the player reached
+- Add the score to the CSV file when the game ends
+- Run a sort on the values in the CSV file to order them
+
+
+If we have time:
+- Add upgrade buttons
+- More enemies
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+As of 5/30/17
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Tasks Still required
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Create buttons for shop functionality
+- Create traps
+- Create a highscore system
+- Implement waves
+
+If we have time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- create an upgrade system
+- create more enemies
+- create a variety of traps
+
+Timeline
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+We expect to have the buttons completed by the end of the 31st and the traps done by the 3rd. This gives us the weekend to implement a highscore system and waves. We then have a couple more days to work on polishing up loose ends and working on variety.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+As of 6/02/17
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Tasks Completed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Create buttons for shop functionality
+- Create traps
+
+Tasks Still Required
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Create a highscore system
+- Implement waves
+
+If we have time...
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- create an upgrade system
+- create more enemies
+- create a variety of traps
+
+Timeline
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+We expect to have the traps done by the 3rd. This gives us the weekend to implement a highscore system and waves. We then will have a couple more days to work on polishing up loose ends and working on variety.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
