@@ -1,18 +1,13 @@
-class Turret extends PVector {
+class Turret extends Attributes {
 
-  int startingHP; 
-  int currentHP; 
   int damage;
   int price;
   double fireRate;
   double range;
   PVector target;
-  //PVector loc;
 
   Turret(Enemy newTarget, int newX, int newY) {
-    super(newX, newY);
-    startingHP = 50;
-    currentHP = 50;
+    super(newX, newY, 50, 50);
     damage = 5;
     price = 10;
     fireRate = 30;
@@ -30,7 +25,10 @@ class Turret extends PVector {
 
   void shoot() {
   }
-
+  
+  void dead() {
+  }
+  
   boolean isTargetDead() {
     return ((Enemy)target).isDead();
   }

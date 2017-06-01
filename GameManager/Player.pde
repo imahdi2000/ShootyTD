@@ -1,28 +1,17 @@
-class Player extends PVector {
+class Player extends Attributes {
 
-  PVector dir;
   float speed;
-  int startingHP;
-  int currentHP;
   int money;
   ArrayList<Weapon> weapons;
   int currentWeapon;
-  boolean isDead;
-  color c;
   ArrayList<Object> inventory;
 
   Player() {
-    super(600, 300);
-    weapons = new ArrayList<Weapon>();
-    dir = new PVector();
+    super(600, 300, 100, 100);
     speed = 3;
-    startingHP = 100;
-    currentHP = 100;
     money = 0;
     weapons = new ArrayList<Weapon>();
     currentWeapon = 0;
-    isDead = false;
-    c = color(102, 255, 102);
     inventory = new ArrayList<Object>();
   }
 
@@ -50,21 +39,6 @@ class Player extends PVector {
   void dead() {
   }
 
-  // Health Bar
-  void healthBar() {
-    if (currentHP >= 0) {
-      // Outline
-      stroke(0);
-      fill(255, 0, 0);
-      rect(x - 25, y - 25, 50, 5);
-
-      // Bar
-      float drawWidth = (float(currentHP) / startingHP) * 50;
-      fill(0, 255, 0); // Green
-      rect(x - 25, y - 25, drawWidth, 5);
-    }
-  }
-
   boolean collidesWithObject(PVector obj) {
     float d = dist(this, obj);
     //System.out.println(d);
@@ -72,8 +46,6 @@ class Player extends PVector {
   }
 
   void display() {
-    fill(c);
-    // ellipse(x, y, 20, 20);
     imageMode(CENTER);
     image(play, x, y);
     healthBar();

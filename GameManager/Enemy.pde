@@ -1,28 +1,18 @@
-class Enemy extends PVector {
+class Enemy extends Attributes {
 
-  PVector dir;
   PVector target;
   float speed;
-  int startingHP;
-  int currentHP;
   int damage;
   int goldAmount;
-  Boolean isDead;
   Boolean inRangeNexus; // player does not get attacked if target is nexus
-  color c;
 
   Enemy(PVector newTarget) {
-    super(random(1200), random(720));
-    dir = new PVector();
+    super((int)random(1200), (int)random(720), 100, 100);
     target = newTarget;
     speed = 2;
-    startingHP = 100;
-    currentHP = 100;
     damage = 1;
     goldAmount = 50;
-    isDead = false;
     inRangeNexus = false;
-    c = color(102, 102, 102);
   }
 
   void move() {   
@@ -103,8 +93,6 @@ class Enemy extends PVector {
   }
 
   void display() {
-    fill(c);
-    // ellipse(x, y, 30, 30);
     imageMode(CENTER);
     image(ene, x, y);
     healthBar();

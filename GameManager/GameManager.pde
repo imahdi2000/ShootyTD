@@ -47,7 +47,7 @@ void setup() {
   goldList = new ArrayList<Gold>(); 
   turrets = new ArrayList<Turret>();
   shop = new Shop();
-  button1 = new Button();
+  button1 = new Button(100, 100, 100, 100);
   buying = false;
   buyingTrap = false;
 

@@ -1,16 +1,7 @@
-class Nexus extends PVector { 
-
-  int startingHP;
-  int currentHP;
-  boolean isDead;
-  color c;
-
+class Nexus extends Attributes { 
+  
   Nexus() {
-    super(width / 2, height / 2);
-    startingHP = 1000;
-    currentHP = 1000;
-    isDead = false;
-    c = color(102, 204, 255);
+    super(width / 2, height / 2, 1000, 1000);
   }
 
   void takeDamage(int damage) {
@@ -36,7 +27,6 @@ class Nexus extends PVector {
   }
 
   void display() {
-    fill(c);
     // ellipse(x, y, 50, 50);
     healthBar();
     imageMode(CENTER);
