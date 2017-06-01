@@ -103,27 +103,6 @@ If we have time:
 - More enemies
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-As of 5/30/17
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Tasks Still required
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- Create buttons for shop functionality
-- Create traps
-- Create a highscore system
-- Implement waves
-
-If we have time
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- create an upgrade system
-- create more enemies
-- create a variety of traps
-
-Timeline
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-We expect to have the buttons completed by the end of the 31st and the traps done by the 3rd. This gives us the weekend to implement a highscore system and waves. We then have a couple more days to work on polishing up loose ends and working on variety.
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 As of 6/02/17
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -136,12 +115,15 @@ Tasks Still Required
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Create a highscore system
 - Implement waves
+- Fix turret aggression
 
 If we have time...
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - create an upgrade system
 - create more enemies
 - create a variety of traps
+- add boundaries to the map
+- fix bugs found in "BugList.txt"
 
 Timeline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
