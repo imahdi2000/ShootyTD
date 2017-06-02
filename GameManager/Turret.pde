@@ -7,7 +7,7 @@ class Turret extends Attributes {
   PVector target;
 
   Turret(Enemy newTarget, int newX, int newY) {
-    super(newX, newY, 50, 50);
+    super(newX, newY, 100, 100);
     damage = 5;
     price = 10;
     fireRate = 30;
@@ -15,22 +15,12 @@ class Turret extends Attributes {
     target = newTarget;
   }
 
-  void takeDamage(int damage) {
-    currentHP -= damage;
-  }
-
   boolean enemyInRange() {
     return dist(this, target) < range;
   }
 
-  void shoot() {
-  }
-  
-  void dead() {
-  }
-  
   boolean isTargetDead() {
-    return ((Enemy)target).isDead();
+    return ((Attributes)target).isDead;
   }
 
   double getFireRate() {
@@ -45,21 +35,6 @@ class Turret extends Attributes {
       }
     }
     target = newTarget;
-  }
-
-  // Health Bar
-  void healthBar() {
-    if (currentHP >= 0) {
-      // Outline
-      stroke(0);
-      fill(255, 0, 0);
-      rect(x - 25, y - 25, 50, 5);
-
-      // Bar
-      float drawWidth = (float(currentHP) / startingHP) * 50;
-      fill(0, 255, 0); // Green
-      rect(x - 25, y - 25, drawWidth, 5);
-    }
   }
   
   int getPrice(){

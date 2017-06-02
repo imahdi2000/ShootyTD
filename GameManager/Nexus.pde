@@ -4,13 +4,6 @@ class Nexus extends Attributes {
     super(width / 2, height / 2, 1000, 1000);
   }
 
-  void takeDamage(int damage) {
-    currentHP -= damage;
-  }
-
-  void dead() {
-  }
-
   // Health Bar
   void healthBar() {
     if (currentHP >= 0) {

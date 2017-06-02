@@ -1,9 +1,9 @@
 abstract class Attributes extends PVector {
 
-  PVector dir;
-  int startingHP;
-  int currentHP;
-  boolean isDead;
+  protected PVector dir;
+  protected int startingHP;
+  protected int currentHP;
+  protected boolean isDead;
 
   Attributes() {
     super(width / 3, height / 3);
@@ -12,9 +12,9 @@ abstract class Attributes extends PVector {
     currentHP = 100;
     isDead = false;
   }
-  
+
   Attributes(int x, int y, int startHP, int currHP) {
-    super(x,y);
+    super(x, y);
     dir = new PVector();
     startingHP = startHP;
     currentHP = currHP;
@@ -23,10 +23,15 @@ abstract class Attributes extends PVector {
 
   void takeDamage(int dmg) {
     currentHP -= dmg;
+
   }
 
-  abstract void dead();
-
+  void dead() {
+    if (currentHP <= 0) {
+      isDead = true;
+    }
+  }
+  
   void healthBar() {
     if (currentHP >= 0) {
       // Outline
@@ -40,6 +45,6 @@ abstract class Attributes extends PVector {
       rect(x - 25, y - 25, drawWidth, 5);
     }
   }
-
+  
   abstract void display();
 }

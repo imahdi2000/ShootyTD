@@ -107,7 +107,16 @@ void draw() {
     en.dead();
     en.attackPlayer(player);
     en.attackNexus(nexus);
-    // Remove enemies from ArrayList if they are dead
+    for (int t = 0; t < turrets.size(); t++) {
+       en.attackTurret(turrets.get(t)); 
+    }
+    
+    // Find new target
+    if (en.isTargetDead()) {
+      en.resetTarget();
+    }
+    
+    // Remove enemies from ArrayList when they die
     if (en.isDead) {
       goldList.add(new Gold(en, en.goldAmount));//add a gold when he dies
       spawnedEnemies.remove(e);
@@ -144,16 +153,25 @@ void draw() {
 
   // Display turrets
   for (int t = 0; t < turrets.size(); t++) {
-    turrets.get(t).display();
-    turrets.get(t).findTarget(spawnedEnemies);
-    if (frameCount % turrets.get(t).getFireRate() == 0 && turrets.get(t).enemyInRange() && !turrets.get(t).isTargetDead()) {
-      PVector dir = PVector.sub(turrets.get(t).target, turrets.get(t)); // Direction
+    Turret tur = turrets.get(t);
+    tur.display();
+    tur.dead();
+    tur.findTarget(spawnedEnemies);
+    
+    // Shooting
+    if (frameCount % tur.getFireRate() == 0 && tur.enemyInRange() && !tur.isTargetDead()) {
+      PVector dir = PVector.sub(tur.target, tur); // Direction
       dir.normalize(); // Unit vector
       dir.mult(8); // Bullet speed
 
       // Add bullet to arraylist
-      Bullet b = new Bullet(turrets.get(t), dir);
+      Bullet b = new Bullet(tur, dir);
       bullets.add(b);
+    }
+    
+    // Dead
+    if (tur.isDead) {
+      turrets.remove(tur); 
     }
   }
 

@@ -28,29 +28,11 @@ class Player extends Attributes {
     this.add(dir); // Move towards
   }
 
-  // don't need this -- have to incorporate weapon with bullet
-  void shoot() {
-  }
-
-  void takeDamage(int damage) {
-    currentHP -= damage;
-  }
-
-  void dead() {
-  }
-
   boolean collidesWithObject(PVector obj) {
     float d = dist(this, obj);
     //System.out.println(d);
     return  d <= 10;
   }
-
-  void display() {
-    imageMode(CENTER);
-    image(play, x, y);
-    healthBar();
-  }
-
 
   int getMoney() {
     return money;
@@ -63,12 +45,18 @@ class Player extends Attributes {
   void addWeapon(Weapon pewpew) {
     weapons.add(pewpew);
   }
-  
+
   void setCurrentWeapon(int weapNum) {
-    currentWeapon = weapNum;  
+    currentWeapon = weapNum;
   }
-  
+
   Weapon getCurrentWeapon() {
-    return weapons.get(currentWeapon); 
+    return weapons.get(currentWeapon);
+  }
+
+  void display() {
+    imageMode(CENTER);
+    image(play, x, y);
+    healthBar();
   }
 }

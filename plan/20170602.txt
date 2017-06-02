@@ -95,7 +95,6 @@ Trap:
 Highscore:
 - Calculate the score based on what wave the player reached
 - Add the score to the CSV file when the game ends
-- Run a sort on the values in the CSV file to order them
 
 
 If we have time:

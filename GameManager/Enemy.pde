@@ -4,7 +4,8 @@ class Enemy extends Attributes {
   float speed;
   int damage;
   int goldAmount;
-  Boolean inRangeNexus; // player does not get attacked if target is nexus
+  boolean inRangeNexus; // player does not get attacked if target is nexus
+  boolean inRangeTurret;
 
   Enemy(PVector newTarget) {
     super((int)random(1200), (int)random(720), 100, 100);
@@ -41,55 +42,41 @@ class Enemy extends Attributes {
       player.takeDamage(damage);
     }
   }
-  
+
   void attackTurret(Turret turret) {
     // If it touches target (turret --> smack smack)
     // Attack turret
-    if (dist(this, turret) < 15) {
+    if (dist(this, turret) < 100 && !inRangeNexus) {
+      inRangeTurret = true;
+      target = turret;
+    }
+
+    if (inRangeTurret && dist(this, turret) < 30) {
       turret.takeDamage(damage);
     }
   }
-  
+
   void attackNexus(Nexus nexus) {
     // Attack Nexus
     // Switch target to nexus
-    if (dist(this, nexus) < 150) {
-       inRangeNexus = true;
-       target = nexus;
+    if (dist(this, nexus) < 150 && !inRangeTurret) {
+      inRangeNexus = true;
+      target = nexus;
     }
-    
-    if (inRangeNexus) {
+
+    if (inRangeNexus && dist(this, nexus) < 50) {
       nexus.takeDamage(damage);
     }
   }
-  
-  void takeDamage(int damage) {
-    currentHP -= damage;
+
+  boolean isTargetDead() {
+    return ((Attributes)target).isDead;
   }
 
-  void dead() {
-    if (currentHP <= 0) {
-      isDead = true;
-    }
-  }
-
-  boolean isDead() {
-    return isDead;
-  }
-
-  // Health Bar
-  void healthBar() {
-    if (currentHP >= 0) {
-      // Outline
-      stroke(0);
-      fill(255, 0, 0);
-      rect(x - 25, y - 25, 50, 5);
-
-      // Bar
-      float drawWidth = (float(currentHP) / startingHP) * 50;
-      fill(0, 255, 0); // Green
-      rect(x - 25, y - 25, drawWidth, 5);
-    }
+  void resetTarget() {
+    inRangeTurret = false;
+    inRangeNexus = false;
+    target = player;
   }
 
   void display() {

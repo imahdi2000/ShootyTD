@@ -118,6 +118,11 @@ Ish :: Worked on buttons + shop setup
 Marcus :: Added Attributes.pde and refactored
 ==============================================================
 
+2017-06-01
+--------------------------------------------------------------
+Marcus :: Fixed enemy targeting and updated UML and flow
+==============================================================
+
 yyyy-mm-dd
 --------------------------------------------------------------
 <Member> :: <Thing member did.>
