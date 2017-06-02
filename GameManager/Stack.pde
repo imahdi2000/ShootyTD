@@ -9,18 +9,25 @@ class Stack <T> {
 
 
   //means of insertion
-  void push( T s ) {
+  void push(T s) {
     _stack.add(s);
   }
 
 
-  //means of removal
-  T pop( ) { 
+  T get() { 
     T retVal = null;
-    retVal = _stack.get(_stack.size());
+    if (!_stack.isEmpty()) {
+      retVal = _stack.get(_stack.size() - 1);
+    }
     return retVal;
   }
-  
+
+  void pop() {
+    if (!_stack.isEmpty()) {
+      _stack.remove(_stack.size() - 1);
+    }
+  }
+
   int size() {
     return _stack.size();
   }

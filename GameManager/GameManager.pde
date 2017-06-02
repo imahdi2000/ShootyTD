@@ -175,6 +175,16 @@ void draw() {
     }
   }
 
+  // Display Traps
+  for (int r = 0; r < Grid.length; r++) {
+    for (int c = 0; c < Grid[0].length; c++) {
+        Trap tr = Grid[r][c].traps.get();
+        if (tr != null) {
+           tr.display();
+        }
+    }
+  }
+
   //check mouse for hovercell
   mouseCheck();
 }

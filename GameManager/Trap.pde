@@ -23,7 +23,8 @@ class Trap extends PVector {
  }
  
  void display(){
-   
+   fill(#FFFF00);
+   rect(x - 15, y - 15, 30, 30);
  }
   
 }
