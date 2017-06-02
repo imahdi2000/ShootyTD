@@ -37,10 +37,12 @@ class Button {
   void pressed() {
     // If mouse is hovering over CORRESPONDING button
     if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
-      if (hasweapon == true) {
+      if (hasweapon) {
         hasweapon = false;
-      } else { 
+      } else if (hasTurret) {//turret button
         buying = true;
+      } else if (hasTrap) {//trap button
+        buyingTrap = true;
       }
     }
   }

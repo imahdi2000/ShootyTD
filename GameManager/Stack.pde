@@ -20,4 +20,8 @@ class Stack <T> {
     retVal = _stack.get(_stack.size());
     return retVal;
   }
+  
+  int size() {
+    return _stack.size();
+  }
 }

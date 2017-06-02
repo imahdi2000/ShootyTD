@@ -2,9 +2,16 @@
 class Cell {
   int x;
   int y;
-
+  
   Turret occupant = null;
-  Stack<Trap> traps = null;
+  Stack<Trap> traps;
+
+  Cell(int newX, int newY) {
+    x = newX;
+    y = newY;
+    traps = new Stack<Trap>();
+  }
+
 
   void build(Turret t) {//build turret
     if (buildable()) {
@@ -24,7 +31,7 @@ class Cell {
   }
 
   boolean buildable() {//turret placable
-    if (occupant == null && traps == null) {
+    if (occupant == null && traps.size() == 0) {
       return true;
     } else {
       return false;
@@ -47,10 +54,5 @@ class Cell {
       stroke(#FF0000);
     }
     rect(x * cellSize, y * cellSize, cellSize, cellSize);
-  }
-
-  Cell(int newX, int newY) {
-    x = newX;
-    y = newY;
   }
 }

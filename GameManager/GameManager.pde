@@ -219,6 +219,9 @@ void mousePressed() {
     if (hoverCell.buildable() && buying) {
       hoverCell.build(new Turret(dummy1, hoverCell.x * 30 + 15, hoverCell.y * 30 + 15));
     }
+    else if (hoverCell.trapBuildable() && buyingTrap) {
+      hoverCell.build(new Trap(50, 50, hoverCell.x * 30 + 15, hoverCell.y * 30 + 15));
+    }
   }
 }
 
