@@ -96,7 +96,7 @@ void draw() {
 
   //Show money
   textSize(32);
-  text(player.money, 10, 30); 
+  text(player.money + "$", 10, 30); 
 
   // Mouse vector
   PVector mouse = new PVector(mouseX, mouseY);
