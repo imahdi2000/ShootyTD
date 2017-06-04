@@ -1,11 +1,11 @@
-public class LList implements List 
+class LList implements List { 
 
   //instance vars
-  private LLNode _head;
-  private int _size;
+  LLNode _head;
+  int _size;
 
   // constructor -- initializes instance vars
-  public LList( ) 
+  LList( ) 
   {
     _head = null; //at birth, a list has no elements
     _size = 0;
@@ -14,7 +14,7 @@ public class LList implements List
 
   //--------------v  List interface methods  v--------------
 
-  public boolean add( String newVal )
+  boolean add( String newVal )
   { 
     LLNode tmp = new LLNode( newVal, _head );
     _head = tmp;
@@ -23,7 +23,7 @@ public class LList implements List
   } 
 
 
-  public String get( int index )
+  String get( int index )
   { 
     if ( index < 0 || index >= size() )
       throw new IndexOutOfBoundsException();
@@ -41,7 +41,7 @@ public class LList implements List
   } 
 
 
-  public String set( int index, String newVal )
+  String set( int index, String newVal )
   { 
     if ( index < 0 || index >= size() )
       throw new IndexOutOfBoundsException();
@@ -62,7 +62,7 @@ public class LList implements List
   } 
 
   //return number of nodes in list
-  public int size() { 
+  int size() { 
     return _size;
   } 
 
@@ -70,7 +70,7 @@ public class LList implements List
 
 
   // override inherited toString
-  public String toString() { 
+  String toString() { 
     String retStr = "HEAD->";
     LLNode tmp = _head; //init tr
     while ( tmp != null ) {

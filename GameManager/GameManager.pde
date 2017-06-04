@@ -53,14 +53,14 @@ void setup() {
 
   // Enemy Queue
   for (int w = 0; w < 5; w++) {
-      Queue<Enemy> enemyQ = new Queue<Enemy>();
-      for (int e = 0; e < random(10, 26); e++) {
-        Enemy enemy = new Enemy(player, (int)random(1,4), (int)random(50, 121));
-        enemyQ.enqueue(enemy);
-      }
-      queuedEnemies.add(enemyQ);
+    Queue<Enemy> enemyQ = new Queue<Enemy>();
+    for (int e = 0; e < random(10, 26); e++) {
+      Enemy enemy = new Enemy(player, (int)random(1, 4), (int)random(50, 121));
+      enemyQ.enqueue(enemy);
+    }
+    queuedEnemies.add(enemyQ);
   }
-  
+
   ////spawned one enemy below for testing, remove later
   //dummy1 = new Enemy(player);
   //dummy2 = new Enemy(player);
@@ -90,7 +90,7 @@ void draw() {
   player.display();
   nexus.display();
   shop.display();
- 
+
   // Movement
   player.move();
 
@@ -120,7 +120,7 @@ void draw() {
     en.dead();
     en.attackPlayer(player);
     en.attackNexus(nexus);
-    
+
     // Locate turret to attack
     for (int t = 0; t < turrets.size(); t++) {
       en.attackTurret(turrets.get(t));
@@ -193,9 +193,18 @@ void draw() {
   // Display Traps
   for (int r = 0; r < Grid.length; r++) {
     for (int c = 0; c < Grid[0].length; c++) {
-      Trap tr = Grid[r][c].traps.get();
-      if (tr != null) {
-        tr.display();
+      if (Grid[r][c] != null) {
+        Trap tr = Grid[r][c].traps.get();
+        if (tr != null) {
+          tr.display();
+          for (int e = 0; e < spawnedEnemies.size(); e++) {
+            if (tr.collidesWithEnemy(spawnedEnemies.get(e))) {
+              // Remove trap after dealing damage to enemy
+              spawnedEnemies.get(e).takeDamage(tr.damage);
+              Grid[r][c] = null;
+            }
+          }
+        }
       }
     }
   }
@@ -262,7 +271,7 @@ void mouseClicked() {
 void mousePressed() {
   if (hoverCell != null) {
     if (hoverCell.buildable() && buyingTurret) {
-      hoverCell.build(new Turret(new PVector(10000,10000), hoverCell.x * 30 + 15, hoverCell.y * 30 + 15, (int)random(100,251), (int)random(10,31)));
+      hoverCell.build(new Turret(new PVector(10000, 10000), hoverCell.x * 30 + 15, hoverCell.y * 30 + 15, (int)random(100, 251), (int)random(10, 31)));
     } else if (hoverCell.trapBuildable() && buyingTrap) {
       hoverCell.build(new Trap(50, 50, hoverCell.x * 30 + 15, hoverCell.y * 30 + 15));
     }
@@ -274,7 +283,7 @@ void spawnEnemies() {
   if (frameCount % 200 == 0 && !queuedEnemies.get(wave).isEmpty()) {
     spawnedEnemies.add(queuedEnemies.get(wave).dequeue());
   }
-  
+
   if (queuedEnemies.get(wave).isEmpty() && spawnedEnemies.isEmpty()) {
     wave++;
     System.out.println("Wave " + (wave + 1));
