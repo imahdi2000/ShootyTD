@@ -18,6 +18,7 @@ class Button {
     w = w1;
     h = h1;
     weapon = null;
+    c = color(55, 55, 255);
   }
 
   Button(float x1, float y1, float w1, float h1, int nPrice, Weapon g) {
@@ -67,19 +68,23 @@ class Button {
    String name;
    */
   void display() { 
+    color oldC = c;
     fill(c);
     rect(x, y, w, h);
-    textSize(25);
+    textSize(20);
+    c = color(0, 0, 0); 
+    fill(c);
     if (hasweapon) {
-      text(weapon.name + ":" + price + "$", x, y);
-      textSize(15);
-      text("Damage" + ":" + weapon.damage, x, y - 25);
-      text("FireRate" + ":" + weapon.fireRate, x, y - 40);
-      text("Range" + ":" + weapon.range, x, y - 55);
+      text(weapon.name + ":" + price + "$", x, y + 20);
+      textSize(10);
+      text("Damage" + ":" + weapon.damage, x, y + 30);
+      text("FireRate" + ":" + weapon.fireRate, x, y + 40);
+      text("Range" + ":" + weapon.range, x, y + 50);
     } else if (hasTrap) {
-      text("Trap" + ":" + price + "$", x, y);
+      text("Trap" + ":" + price + "$", x, y + 20);
     } else if (hasTurret) {
-      text("Turret" + ":" + price + "$", x, y);
+      text("Turret" + ":" + price + "$", x, y + 20);
     }
+    c = oldC;
   }
 }
