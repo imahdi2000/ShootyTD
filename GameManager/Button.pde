@@ -75,15 +75,15 @@ class Button {
     c = color(0, 0, 0); 
     fill(c);
     if (hasweapon) {
-      text(weapon.name + ":" + price + "$", x, y + 20);
+      text(weapon.name + ":" +  "$" + price, x, y + 20);
       textSize(10);
       text("Damage" + ":" + weapon.damage, x, y + 30);
       text("FireRate" + ":" + weapon.fireRate, x, y + 40);
       text("Range" + ":" + weapon.range, x, y + 50);
     } else if (hasTrap) {
-      text("Trap" + ":" + price + "$", x, y + 20);
+      text("Trap" + ":" +  "$" + price, x, y + 20);
     } else if (hasTurret) {
-      text("Turret" + ":" + price + "$", x, y + 20);
+      text("Turret" + ":" +  "$" + price, x, y + 20);
     }
     c = oldC;
   }
