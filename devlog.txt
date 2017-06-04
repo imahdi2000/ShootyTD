@@ -125,6 +125,11 @@ Marcus :: Fixed enemy targeting and updated UML and flow
 
 2017-06-02
 --------------------------------------------------------------
+Marcus, Xing Tao, Ish :: Trap placement
+==============================================================
+
+2017-06-03
+--------------------------------------------------------------
 Marcus :: Added enemy queues and spawning based on wave,
 fixed enemy attacking distance, and attempted player weapon balancing 
 ==============================================================
