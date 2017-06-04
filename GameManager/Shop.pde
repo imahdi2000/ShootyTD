@@ -10,23 +10,24 @@ class Shop {
   // Temporary (we will add button c
   // Setup Shop
   Shop() {
+    //price is 3rd item in constructor
     weapons = new ArrayList<Weapon>();
-    Weapon blaster = new Weapon("blaster", 30, 50, 20, 100);
-    Weapon laser = new Weapon("laser", 40, 100, 16, 500);
-    Weapon banana = new Weapon("banana", 50, 150, 8, 1000);
+    Weapon blaster = new Weapon("Blaster", 30, 50, 20, 100);
+    Weapon laser = new Weapon("Laser", 40, 100, 16, 500);
+    Weapon banana = new Weapon("Banana", 50, 150, 8, 1000);
 
     button = new ArrayList<Button>();
 
-    Button blast = new Button(200, 600, 150, 80, blaster);
+    Button blast = new Button(200, 600, 150, 80, blaster.price, blaster);
     button.add(blast);
-    Button las = new Button(360, 600, 150, 80, laser);
+    Button las = new Button(360, 600, 150, 80, laser.price, laser);
     button.add(las);    
-    Button ban = new Button(520, 600, 150, 80, banana);
+    Button ban = new Button(520, 600, 150, 80, banana.price, banana);
     button.add(ban);  
-    Button turr = new Button(680, 600, 150, 80);
+    Button turr = new Button(680, 600, 150, 50, 80);
     turr.hasTurret = true;
     button.add(turr); 
-    Button tra = new Button(840, 600, 150, 80);
+    Button tra = new Button(840, 600, 150, 50, 80);
     tra.hasTrap = true;
     button.add(tra);
 

@@ -94,6 +94,10 @@ void draw() {
   // Movement
   player.move();
 
+  //Show money
+  textSize(32);
+  text(player.money, 10, 30); 
+
   // Mouse vector
   PVector mouse = new PVector(mouseX, mouseY);
   fill(0);
@@ -270,9 +274,9 @@ void mouseClicked() {
 
 void mousePressed() {
   if (hoverCell != null) {
-    if (hoverCell.buildable() && buyingTurret) {
+    if (hoverCell.buildable() && buyingTurret && player.money >= 50) {
       hoverCell.build(new Turret(new PVector(10000, 10000), hoverCell.x * 30 + 15, hoverCell.y * 30 + 15, (int)random(100, 251), (int)random(10, 31)));
-    } else if (hoverCell.trapBuildable() && buyingTrap) {
+    } else if (hoverCell.trapBuildable() && buyingTrap && player.money >= 50) {
       hoverCell.build(new Trap(50, 50, hoverCell.x * 30 + 15, hoverCell.y * 30 + 15));
     }
   }

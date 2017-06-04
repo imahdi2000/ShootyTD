@@ -1,6 +1,5 @@
 class Button {
   int price;
-  int damage;
   float x;
   float y;
   float w;
@@ -12,9 +11,8 @@ class Button {
   boolean hasTrap = false;  
   boolean triggered = false;
 
-  Button(float x1, float y1, float w1, float h1) {
-    price = 0;
-    damage = 0;
+  Button(float x1, float y1, float w1, int nPrice, float h1) {
+    price = nPrice;
     x = x1;
     y = y1;
     w = w1;
@@ -22,9 +20,8 @@ class Button {
     weapon = null;
   }
 
-  Button(float x1, float y1, float w1, float h1, Weapon g) {
-    price = 0;
-    damage = 0;
+  Button(float x1, float y1, float w1, float h1, int nPrice, Weapon g) {
+    price = nPrice;
     x = x1;
     y = y1;
     w = w1;
@@ -60,11 +57,29 @@ class Button {
   }
 
   boolean afford(Weapon pewpew) {
-    return player.getMoney() > pewpew.getPrice();
+    return player.getMoney() >= pewpew.getPrice();
   }
-
+  /*
+  int damage;
+   int price;
+   int fireRate;
+   double range;
+   String name;
+   */
   void display() { 
     fill(c);
     rect(x, y, w, h);
+    textSize(25);
+    if (hasweapon) {
+      text(weapon.name + ":" + price + "$", x, y);
+      textSize(15);
+      text("Damage" + ":" + weapon.damage, x, y - 25);
+      text("FireRate" + ":" + weapon.fireRate, x, y - 40);
+      text("Range" + ":" + weapon.range, x, y - 55);
+    } else if (hasTrap) {
+      text("Trap" + ":" + price + "$", x, y);
+    } else if (hasTurret) {
+      text("Turret" + ":" + price + "$", x, y);
+    }
   }
 }
