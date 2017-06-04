@@ -4,7 +4,12 @@ PImage ene;
 PImage turr;
 PImage gol;
 PImage play;
-//PImage m1;
+LList map;
+PImage m1; //green
+PImage m2;//red
+PImage m3;//purple
+PImage gameover;
+//int MVar;
 Player player;
 Nexus nexus;
 Shop shop;
@@ -38,7 +43,18 @@ void setup() {
   turr = loadImage("turret.png");
   gol = loadImage("gold.png");
   play = loadImage("player.png");
-  // m1 = loadImage("map1.png");
+  gameover = loadImage("gameover.png");
+  map = new LList();
+  m1 = loadImage("map1.png");
+  m2 = loadImage("map2.png");
+  m3 = loadImage("map3.png");
+  map.add(m3);
+  map.add(m2);
+  map.add(m1);
+
+
+  //System.out.println(map.size());
+
   player = new Player();
   nexus = new Nexus();
   bullets = new ArrayList<Bullet>();
@@ -59,6 +75,7 @@ void setup() {
       enemyQ.enqueue(enemy);
     }
     queuedEnemies.add(enemyQ);
+    //map.get(wave);
   }
 
   ////spawned one enemy below for testing, remove later
@@ -81,8 +98,16 @@ void setup() {
 
 void draw() {
   // Background color white
-  background(255);
-  //background(0);
+  //background(gameover);
+  //background(map.size());
+  
+  //mkaes sure i don't get nullpointer inspection due to the amount of elemnets in map
+  if ((wave < map.size())) { 
+    background(map.get(wave));
+  } else {
+    background(gameover);
+  }
+  
   //image(m1, 600, 360);
   noStroke();
   smooth();
@@ -90,7 +115,9 @@ void draw() {
   player.display();
   nexus.display();
   shop.display();
-
+  //if(queuedEnemies.size() < 1){
+  //System.out.println("Queue is empty"); 
+  //}
   // Movement
   player.move();
 
@@ -225,7 +252,7 @@ void mouseCheck() {
 
   if (x < Grid.length && y < Grid[0].length) {
     hoverCell = Grid[x][y];
-    hoverCell.outline();
+    hoverCell.outline(); //error here idk
   }
 }
 
@@ -284,11 +311,11 @@ void mousePressed() {
 
 // Spawn an enemy every X frames --- Randomize spawning
 void spawnEnemies() {
-  if (frameCount % 200 == 0 && !queuedEnemies.get(wave).isEmpty()) {
+  if (frameCount % 200 == 0 && !queuedEnemies.get(wave).isEmpty() && (wave < map.size())) {
     spawnedEnemies.add(queuedEnemies.get(wave).dequeue());
   }
 
-  if (queuedEnemies.get(wave).isEmpty() && spawnedEnemies.isEmpty()) {
+  if (queuedEnemies.get(wave).isEmpty() && spawnedEnemies.isEmpty() && (wave < map.size())) {
     wave++;
     System.out.println("Wave " + (wave + 1));
   }

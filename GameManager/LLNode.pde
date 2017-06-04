@@ -1,11 +1,11 @@
 class LLNode 
 {
 
-  private String _cargo;    //cargo may only be of type String
+  private PImage _cargo;    //cargo may only be of type PImage
   private LLNode _nextNode; //pointer to next LLNode
 
   // constructor -- initializes instance vars
-  public LLNode( String value, LLNode next ) 
+  public LLNode( PImage value, LLNode next ) 
   {
     _cargo = value;
     _nextNode = next;
@@ -13,7 +13,7 @@ class LLNode
 
 
   //--------------v  ACCESSORS  v--------------
-  public String getCargo() { 
+  public PImage getCargo() { 
     return _cargo;
   }
 
@@ -24,9 +24,9 @@ class LLNode
 
 
   //--------------v  MUTATORS  v--------------
-  public String setCargo( String newCargo ) 
+  public PImage setCargo( PImage newCargo ) 
   {
-    String foo = getCargo();
+    PImage foo = getCargo();
     _cargo = newCargo;
     return foo;
   }
@@ -39,9 +39,4 @@ class LLNode
   }
   //--------------^  MUTATORS  ^--------------
 
-
-  // override inherited toString
-  public String toString() { 
-    return _cargo.toString();
-  }
 }

@@ -14,7 +14,7 @@ class LList implements List {
 
   //--------------v  List interface methods  v--------------
 
-  boolean add( String newVal )
+  boolean add( PImage newVal )
   { 
     LLNode tmp = new LLNode( newVal, _head );
     _head = tmp;
@@ -23,12 +23,12 @@ class LList implements List {
   } 
 
 
-  String get( int index )
+  PImage get( int index )
   { 
     if ( index < 0 || index >= size() )
       throw new IndexOutOfBoundsException();
 
-    String retVal;
+    PImage retVal;
     LLNode tmp = _head; //create alias to head
 
     //walk to desired node
@@ -41,7 +41,7 @@ class LList implements List {
   } 
 
 
-  String set( int index, String newVal )
+  PImage set( int index, PImage newVal )
   { 
     if ( index < 0 || index >= size() )
       throw new IndexOutOfBoundsException();
@@ -53,7 +53,7 @@ class LList implements List {
       tmp = tmp.getNext();
 
     //store target node's cargo
-    String oldVal = tmp.getCargo();
+    PImage oldVal = tmp.getCargo();
 
     //modify target node's cargo
     tmp.setCargo( newVal );
@@ -68,16 +68,4 @@ class LList implements List {
 
   //--------------^  List interface methods  ^--------------
 
-
-  // override inherited toString
-  String toString() { 
-    String retStr = "HEAD->";
-    LLNode tmp = _head; //init tr
-    while ( tmp != null ) {
-      retStr += tmp.getCargo() + "->";
-      tmp = tmp.getNext();
-    }
-    retStr += "NULL";
-    return retStr;
-  }
 }

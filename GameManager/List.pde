@@ -1,10 +1,10 @@
 public interface List { 
 
-    public boolean add( String x ); 
+    public boolean add( PImage x ); 
 
-    public String get( int i ); 
+    public PImage get( int i ); 
 
-    public String set( int i, String x ); 
+    public PImage set( int i, PImage x ); 
 
     public int size(); 
 }
