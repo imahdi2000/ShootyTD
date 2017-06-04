@@ -7,27 +7,27 @@ PImage play;
 //PImage m1;
 Player player;
 Nexus nexus;
-ArrayList<Bullet> bullets;
-ArrayList<Enemy> spawnedEnemies;
-ArrayList<Gold> goldList;
-ArrayList<Turret> turrets;
 Shop shop;
 
+ArrayList<Bullet> bullets;
+ArrayList<Enemy> spawnedEnemies;
+ArrayList<Queue<Enemy>> queuedEnemies;
+ArrayList<Gold> goldList;
+ArrayList<Turret> turrets;
 
-/*
- ArrayList<Enemy> queuedEnemies;
- ArrayList<Trap> traps;
- */
-int waveInterval;
-boolean gameOver;
+int wave;
 int highscore;
+boolean gameOver;
+boolean buyingTurret;
+boolean buyingTrap;
+
 static float cellSize = 30; //how big the cells are
 Cell[][] Grid = new Cell[40][24];
 Cell hoverCell;
-Enemy dummy1;
-Enemy dummy2;
-boolean buying;
-boolean buyingTrap;
+
+//Enemy dummy1;
+//Enemy dummy2;
+
 
 void setup() {
   // Canvas size
@@ -43,23 +43,34 @@ void setup() {
   nexus = new Nexus();
   bullets = new ArrayList<Bullet>();
   spawnedEnemies = new ArrayList<Enemy>();
+  queuedEnemies = new ArrayList<Queue<Enemy>>();
   goldList = new ArrayList<Gold>(); 
   turrets = new ArrayList<Turret>();
   shop = new Shop();
-  buying = false;
+  buyingTurret = false;
   buyingTrap = false;
+  wave = 0;
 
-  //spawned one enemy below for testing, remove later
-  dummy1 = new Enemy(player);
-  dummy2 = new Enemy(player);
-  spawnedEnemies.add(dummy1);
-  spawnedEnemies.add(dummy2);
+  // Enemy Queue
+  for (int w = 0; w < 5; w++) {
+      Queue<Enemy> enemyQ = new Queue<Enemy>();
+      for (int e = 0; e < random(10, 26); e++) {
+        Enemy enemy = new Enemy(player, (int)random(1,4), (int)random(50, 121));
+        enemyQ.enqueue(enemy);
+      }
+      queuedEnemies.add(enemyQ);
+  }
+  
+  ////spawned one enemy below for testing, remove later
+  //dummy1 = new Enemy(player);
+  //dummy2 = new Enemy(player);
+  //spawnedEnemies.add(dummy1);
+  //spawnedEnemies.add(dummy2);
 
-  //spawn a turret for testing
-  Turret dummyTurret = new Turret(dummy1, width/2, height/2 + 100);
-  turrets.add(dummyTurret);
+  ////spawn a turret for testing
+  //Turret dummyTurret = new Turret(dummy1, width/2, height/2 + 100);
+  //turrets.add(dummyTurret);
 
-  System.out.println(dummyTurret.price);
   //create grid
   for (int x = 0; x <Grid.length; x++) {
     for (int y = 0; y < Grid[0].length; y ++) {
@@ -79,7 +90,7 @@ void draw() {
   player.display();
   nexus.display();
   shop.display();
-
+ 
   // Movement
   player.move();
 
@@ -99,6 +110,8 @@ void draw() {
     bullets.add(b);
   }
 
+  // Enemy dequeue
+  spawnEnemies();
   // Display and move enemies
   for (int e = 0; e < spawnedEnemies.size(); e++) {
     Enemy en = spawnedEnemies.get(e);
@@ -107,19 +120,21 @@ void draw() {
     en.dead();
     en.attackPlayer(player);
     en.attackNexus(nexus);
-    for (int t = 0; t < turrets.size(); t++) {
-       en.attackTurret(turrets.get(t)); 
-    }
     
+    // Locate turret to attack
+    for (int t = 0; t < turrets.size(); t++) {
+      en.attackTurret(turrets.get(t));
+    }
+
     // Find new target
     if (en.isTargetDead()) {
       en.resetTarget();
     }
-    
+
     // Remove enemies from ArrayList when they die
     if (en.isDead) {
       goldList.add(new Gold(en, en.goldAmount));//add a gold when he dies
-      spawnedEnemies.remove(e);
+      spawnedEnemies.remove(en);
     }
   }
 
@@ -157,7 +172,7 @@ void draw() {
     tur.display();
     tur.dead();
     tur.findTarget(spawnedEnemies);
-    
+
     // Shooting
     if (frameCount % tur.getFireRate() == 0 && tur.enemyInRange() && !tur.isTargetDead()) {
       PVector dir = PVector.sub(tur.target, tur); // Direction
@@ -168,25 +183,27 @@ void draw() {
       Bullet b = new Bullet(tur, dir);
       bullets.add(b);
     }
-    
+
     // Dead
     if (tur.isDead) {
-      turrets.remove(tur); 
+      turrets.remove(tur);
     }
   }
 
   // Display Traps
   for (int r = 0; r < Grid.length; r++) {
     for (int c = 0; c < Grid[0].length; c++) {
-        Trap tr = Grid[r][c].traps.get();
-        if (tr != null) {
-           tr.display();
-        }
+      Trap tr = Grid[r][c].traps.get();
+      if (tr != null) {
+        tr.display();
+      }
     }
   }
 
   //check mouse for hovercell
-  mouseCheck();
+  if (buyingTurret || buyingTrap) {
+    mouseCheck();
+  }
 }
 
 void mouseCheck() {
@@ -231,7 +248,7 @@ void mouseClicked() {
   shop.buy();
   shop.pressed();
   if (shop.button.get(3).triggered) {
-    buying = true;
+    buyingTurret = true;
     shop.button.get(3).triggered = false;
     System.out.println("Triggered");
   }
@@ -244,12 +261,23 @@ void mouseClicked() {
 
 void mousePressed() {
   if (hoverCell != null) {
-    if (hoverCell.buildable() && buying) {
-      hoverCell.build(new Turret(dummy1, hoverCell.x * 30 + 15, hoverCell.y * 30 + 15));
-    }
-    else if (hoverCell.trapBuildable() && buyingTrap) {
+    if (hoverCell.buildable() && buyingTurret) {
+      hoverCell.build(new Turret(new PVector(10000,10000), hoverCell.x * 30 + 15, hoverCell.y * 30 + 15, (int)random(100,251), (int)random(10,31)));
+    } else if (hoverCell.trapBuildable() && buyingTrap) {
       hoverCell.build(new Trap(50, 50, hoverCell.x * 30 + 15, hoverCell.y * 30 + 15));
     }
+  }
+}
+
+// Spawn an enemy every X frames --- Randomize spawning
+void spawnEnemies() {
+  if (frameCount % 200 == 0 && !queuedEnemies.get(wave).isEmpty()) {
+    spawnedEnemies.add(queuedEnemies.get(wave).dequeue());
+  }
+  
+  if (queuedEnemies.get(wave).isEmpty() && spawnedEnemies.isEmpty()) {
+    wave++;
+    System.out.println("Wave " + (wave + 1));
   }
 }
 

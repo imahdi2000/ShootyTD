@@ -7,13 +7,14 @@ class Enemy extends Attributes {
   boolean inRangeNexus; // player does not get attacked if target is nexus
   boolean inRangeTurret;
 
-  Enemy(PVector newTarget) {
-    super((int)random(1200), (int)random(720), 100, 100);
+  Enemy(PVector newTarget, int nDamage, int startingHP) {
+    super((int)random(1200), (int)random(720), startingHP, startingHP);
     target = newTarget;
     speed = 2;
-    damage = 1;
+    damage = nDamage;
     goldAmount = 50;
     inRangeNexus = false;
+    inRangeTurret = false;
   }
 
   void move() {   
@@ -34,11 +35,12 @@ class Enemy extends Attributes {
     }
   }
 
-  // TODO: DELAY ATTACKS WITH A COUNTER
   void attackPlayer(Player player) {
     // If it touches target (player --> smack smack)
     // Attack player
-    if (dist(this, player) < 15 && !inRangeNexus) {
+    if (dist(this, player) < 40 && !inRangeNexus) {
+      dir.x = 0;
+      dir.y = 0;
       player.takeDamage(damage);
     }
   }
@@ -46,12 +48,14 @@ class Enemy extends Attributes {
   void attackTurret(Turret turret) {
     // If it touches target (turret --> smack smack)
     // Attack turret
-    if (dist(this, turret) < 100 && !inRangeNexus) {
+    if (dist(this, turret) < 100 && !inRangeNexus && frameCount % 20 == 0) {
       inRangeTurret = true;
       target = turret;
     }
 
-    if (inRangeTurret && dist(this, turret) < 30) {
+    if (inRangeTurret && dist(this, turret) < 40) {
+      dir.x = 0;
+      dir.y = 0;
       turret.takeDamage(damage);
     }
   }
@@ -65,6 +69,8 @@ class Enemy extends Attributes {
     }
 
     if (inRangeNexus && dist(this, nexus) < 50) {
+      dir.x = 0;
+      dir.y = 0;
       nexus.takeDamage(damage);
     }
   }

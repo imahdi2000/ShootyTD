@@ -11,9 +11,9 @@ class Shop {
   // Setup Shop
   Shop() {
     weapons = new ArrayList<Weapon>();
-    Weapon blaster = new Weapon("blaster", 10, 10, 15, 100);
-    Weapon laser = new Weapon("laser", 7, 15, 10, 500);
-    Weapon banana = new Weapon("banana", 50, 20, 2, 1000);
+    Weapon blaster = new Weapon("blaster", 30, 50, 20, 100);
+    Weapon laser = new Weapon("laser", 40, 100, 16, 500);
+    Weapon banana = new Weapon("banana", 50, 150, 8, 1000);
 
     button = new ArrayList<Button>();
 
@@ -31,8 +31,8 @@ class Shop {
     button.add(tra);
 
     // Temp
-    player.addWeapon(blaster);
-
+    player.addWeapon(new Weapon("default", 20, 0, 20, 100));
+    weapons.add(blaster);
     weapons.add(laser);
     weapons.add(banana);
   }

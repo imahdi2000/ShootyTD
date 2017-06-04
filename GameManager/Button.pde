@@ -40,7 +40,7 @@ class Button {
       if (hasweapon) {
         hasweapon = false;
       } else if (hasTurret) {//turret button
-        buying = true;
+        buyingTurret = true;
       } else if (hasTrap) {//trap button
         buyingTrap = true;
       }

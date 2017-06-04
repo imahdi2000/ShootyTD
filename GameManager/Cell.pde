@@ -17,7 +17,7 @@ class Cell {
     if (buildable()) {
       occupant = t;
       turrets.add(t);
-      buying = false;
+      buyingTurret = false;
       player.decreaseMoney(t.getPrice());
     }
   }
