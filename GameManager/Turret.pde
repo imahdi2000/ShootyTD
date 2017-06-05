@@ -11,7 +11,7 @@ class Turret extends Attributes {
     damage = nDamage;
     price = 50;
     fireRate = (int)random(15,31);
-    range = 250;
+    range = 300;
     target = newTarget;
   }
 
@@ -28,7 +28,7 @@ class Turret extends Attributes {
   } 
 
   void findTarget(ArrayList<Enemy> enemies) {
-    PVector newTarget = target;
+    PVector newTarget = new PVector(10000,10000);
     for (int e = 0; e < enemies.size(); e++) {
       if (dist(this, enemies.get(e)) < dist(this, newTarget)) {
         newTarget = enemies.get(e);

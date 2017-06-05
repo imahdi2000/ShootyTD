@@ -25,10 +25,5 @@ class Weapon {
   String getName() {
     return name;  
   }
-  
-  void shoot() {
-  }
 
-  void display() {
-  }
 }

@@ -10,7 +10,7 @@ class Enemy extends Attributes {
   Enemy(PVector newTarget, int nDamage, int startingHP) {
     super((int)random(1200), (int)random(720), startingHP, startingHP);
     target = newTarget;
-    speed = 2;
+    speed = random(1,2.2);
     damage = nDamage;
     goldAmount = 50;
     inRangeNexus = false;

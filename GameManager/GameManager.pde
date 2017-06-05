@@ -68,7 +68,7 @@ void setup() {
   wave = 0;
 
   // Enemy Queue
-  for (int w = 0; w < 5; w++) {
+  for (int w = 0; w < 10; w++) {
     Queue<Enemy> enemyQ = new Queue<Enemy>();
     for (int e = 0; e < random(10, 26); e++) {
       Enemy enemy = new Enemy(player, (int)random(1, 4), (int)random(50, 121));
@@ -100,14 +100,14 @@ void draw() {
   // Background color white
   //background(gameover);
   //background(map.size());
-  
+
   //mkaes sure i don't get nullpointer inspection due to the amount of elemnets in map
   if ((wave < map.size())) { 
     background(map.get(wave));
   } else {
     background(gameover);
   }
-  
+
   //image(m1, 600, 360);
   noStroke();
   smooth();
@@ -123,8 +123,9 @@ void draw() {
 
   //Show money
   textSize(32);
-  text("$" + player.money, 10, 30); 
-
+  textAlign(CENTER);
+  text("$" + player.money, width / 1.1, height / 1.1); 
+  text("Wave " + (wave + 1), width / 2, height / 20);
   // Mouse vector
   PVector mouse = new PVector(mouseX, mouseY);
   fill(0);
@@ -223,17 +224,21 @@ void draw() {
 
   // Display Traps
   for (int r = 0; r < Grid.length; r++) {
-    for (int c = 0; c < Grid[0].length; c++) {
-      if (Grid[r][c] != null) {
-        Trap tr = Grid[r][c].traps.get();
-        if (tr != null) {
-          tr.display();
-          for (int e = 0; e < spawnedEnemies.size(); e++) {
-            if (tr.collidesWithEnemy(spawnedEnemies.get(e))) {
-              // Remove trap after dealing damage to enemy
-              spawnedEnemies.get(e).takeDamage(tr.damage);
-              Grid[r][c] = null;
-            }
+    for (int c = 0; c < Grid[0].length; c++) { 
+      if (Grid[r][c].hasOccupant()) {
+        // Turret removal
+        if (Grid[r][c].occupant.isDead) {
+          Grid[r][c].occupant = null;
+        }
+      }
+      Trap tr = Grid[r][c].traps.get();
+      if (tr != null) {
+        tr.display();
+        for (int e = 0; e < spawnedEnemies.size(); e++) {
+          if (tr.collidesWithEnemy(spawnedEnemies.get(e))) {
+            // Remove trap after dealing damage to enemy
+            spawnedEnemies.get(e).takeDamage(tr.damage);
+            Grid[r][c].traps.pop();
           }
         }
       }
@@ -301,8 +306,8 @@ void mouseClicked() {
 
 void mousePressed() {
   if (hoverCell != null) {
-    if (hoverCell.buildable() && buyingTurret && player.money >= 50) {
-      hoverCell.build(new Turret(new PVector(10000, 10000), hoverCell.x * 30 + 15, hoverCell.y * 30 + 15, (int)random(100, 251), (int)random(10, 31)));
+    if (hoverCell.turretBuildable() && buyingTurret && player.money >= 50) {
+      hoverCell.build(new Turret(new PVector(10000, 10000), hoverCell.x * 30 + 15, hoverCell.y * 30 + 15, (int)random(150, 251), (int)random(10, 31)));
     } else if (hoverCell.trapBuildable() && buyingTrap && player.money >= 50) {
       hoverCell.build(new Trap(50, 50, hoverCell.x * 30 + 15, hoverCell.y * 30 + 15));
     }

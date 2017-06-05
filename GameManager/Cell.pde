@@ -2,8 +2,8 @@
 class Cell {
   int x;
   int y;
-  
-  Turret occupant = null;
+
+  Turret occupant;
   Stack<Trap> traps;
 
   Cell(int newX, int newY) {
@@ -12,9 +12,12 @@ class Cell {
     traps = new Stack<Trap>();
   }
 
+  boolean hasOccupant() {
+    return occupant != null;
+  }
 
   void build(Turret t) {//build turret
-    if (buildable()) {
+    if (turretBuildable()) {
       occupant = t;
       turrets.add(t);
       buyingTurret = false;
@@ -30,25 +33,17 @@ class Cell {
     }
   }
 
-  boolean buildable() {//turret placable
-    if (occupant == null && traps.size() == 0) {
-      return true;
-    } else {
-      return false;
-    }
+  boolean turretBuildable() {// turret placable
+    return !hasOccupant() && traps.size() == 0;
   }
 
-  boolean trapBuildable() {//trap placable
-    if (occupant == null) {
-      return true;
-    } else {
-      return false;
-    }
+  boolean trapBuildable() {// trap placable
+    return !hasOccupant();
   }
 
   void outline() {
     noFill();
-    if (buildable()) {
+    if (turretBuildable() && buyingTurret || trapBuildable() && buyingTrap) {
       stroke(#00FF00);
     } else {
       stroke(#FF0000);

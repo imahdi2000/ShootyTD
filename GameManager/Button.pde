@@ -72,6 +72,7 @@ class Button {
     fill(c);
     rect(x, y, w, h);
     textSize(20);
+    textAlign(LEFT);
     c = color(0, 0, 0); 
     fill(c);
     if (hasweapon) {

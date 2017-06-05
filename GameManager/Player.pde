@@ -7,7 +7,7 @@ class Player extends Attributes {
   ArrayList<Object> inventory;
 
   Player() {
-    super(600, 300, 100, 100);
+    super(600, 300, 250, 250);
     speed = 3;
     money = 0;
     weapons = new ArrayList<Weapon>();

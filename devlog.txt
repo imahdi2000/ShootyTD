@@ -140,6 +140,7 @@ fixed enemy attacking distance, and attempted player weapon balancing
 --------------------------------------------------------------
 Xing Tao :: Worked on making buttons run properly and added text for buttons,
 fixed funtionality of traps
+Marcus :: Fixed trap and turret placement bug, added wave text, nerfed enemies
 ==============================================================
 yyyy-mm-dd
 --------------------------------------------------------------
