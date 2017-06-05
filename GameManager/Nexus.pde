@@ -1,7 +1,7 @@
 class Nexus extends Attributes { 
   
   Nexus() {
-    super(width / 2, height / 2 + 25, 2000, 2000);
+    super(width / 2, height / 2, 2000, 2000);
   }
 
   // Health Bar
@@ -17,6 +17,10 @@ class Nexus extends Attributes {
       fill(0, 255, 0); // Green
       rect(x - 40, y - 40, drawWidth, 7);
     }
+  }
+  
+  boolean isDead(){
+   return currentHP < 0; 
   }
 
   void display() {
