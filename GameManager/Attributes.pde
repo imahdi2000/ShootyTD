@@ -36,13 +36,15 @@ abstract class Attributes extends PVector {
   
   void healthBar() {
     if (currentHP >= 0) {
+      float drawWidth = (float(currentHP) / startingHP) * 50;
+      
       // Outline
       stroke(0);
       fill(255, 0, 0);
       rect(x - 25, y - 25, 50, 5);
 
       // Bar
-      float drawWidth = (float(currentHP) / startingHP) * 50;
+      
       fill(0, 255, 0); // Green
       rect(x - 25, y - 25, drawWidth, 5);
     }

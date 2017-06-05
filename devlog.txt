@@ -145,7 +145,8 @@ Marcus :: Fixed trap and turret placement bug, added wave text, nerfed enemies
 
 2017-06-05
 --------------------------------------------------------------
-Xing Tao, Marucs :: Worked on constraining enemy spawn
+Xing Tao, Marcus :: Constrained enemy spawn to left, top, right
+Marcus :: Added shop bar
 ==============================================================
 
 yyyy-mm-dd

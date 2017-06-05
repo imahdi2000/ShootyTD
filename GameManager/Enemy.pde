@@ -9,20 +9,17 @@ class Enemy extends Attributes {
 
   Enemy(PVector newTarget, int nDamage, int nStartingHP) {
     //super((int)random(1200), (int)random(720), startingHP, startingHP);
+    // Left, Top, Right spawning
     if ((int)random(2) == 0) {
       x = (int)random(1200);
-      if ((int)random(2) == 0) {
-        y = 0;
-      } else {
-        y = 720;
-      }
+      y = 0;
     } else {
       if ((int)random(2) == 0) {
         x = 0;
       } else {
         x = 1200;
       }
-      y = (int)random(720);
+      y = (int)random(300,height / 1.3);
     }
     startingHP = nStartingHP;
     target = newTarget;
