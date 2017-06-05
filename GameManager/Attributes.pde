@@ -6,15 +6,17 @@ abstract class Attributes extends PVector {
   protected boolean isDead;
 
   Attributes() {
-    super(width / 3, height / 3);
+    x = width / 3;
+    y = height / 3;
     dir = new PVector();
     startingHP = 100;
     currentHP = 100;
     isDead = false;
   }
 
-  Attributes(int x, int y, int startHP, int currHP) {
-    super(x, y);
+  Attributes(int nx, int ny, int startHP, int currHP) {
+    x = nx;
+    y = ny;
     dir = new PVector();
     startingHP = startHP;
     currentHP = currHP;

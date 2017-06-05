@@ -7,10 +7,26 @@ class Enemy extends Attributes {
   boolean inRangeNexus; // player does not get attacked if target is nexus
   boolean inRangeTurret;
 
-  Enemy(PVector newTarget, int nDamage, int startingHP) {
-    super((int)random(1200), (int)random(720), startingHP, startingHP);
+  Enemy(PVector newTarget, int nDamage, int nStartingHP) {
+    //super((int)random(1200), (int)random(720), startingHP, startingHP);
+    if ((int)random(2) == 0) {
+      x = (int)random(1200);
+      if ((int)random(2) == 0) {
+        y = 0;
+      } else {
+        y = 720;
+      }
+    } else {
+      if ((int)random(2) == 0) {
+        x = 0;
+      } else {
+        x = 1200;
+      }
+      y = (int)random(720);
+    }
+    startingHP = nStartingHP;
     target = newTarget;
-    speed = random(1,2.2);
+    speed = random(1, 2.2);
     damage = nDamage;
     goldAmount = 50;
     inRangeNexus = false;
