@@ -267,27 +267,30 @@ void draw() {
     background(gameover); 
     textSize(32);
     textAlign(CENTER);
-    text("GAME OVER  :(", 600, 70);
-    text("FINAL SCORE", 590, 120);
-    text(Integer.toString(score + player.currentHP + nexus.currentHP), 590, 150);
-    
-    
+    text("GAME OVER  :(", 600, 270);
+    text("FINAL SCORE", 590, 320);
+    text(Integer.toString(score + player.currentHP + nexus.currentHP), 590, 370);
+    text("PRESS R TO PLAY AGAIN",590,500);
+    keyPressed();
+    //if(mouseClicked() == true
+
+
     /*
     if (record == false) { 
-      for (int i = 0; i < highscorefile.length; i++) {
-       if (score > Integer.parseInt(highscorefile[i])) {
-       highscorefile[i] = Integer.toString(score); 
-       record = true;
-       }
-      }
-    
+     for (int i = 0; i < highscorefile.length; i++) {
+     if (score > Integer.parseInt(highscorefile[i])) {
+     highscorefile[i] = Integer.toString(score); 
+     record = true;
+     }
+     }
+     
      // highscorefile[3] = Integer.toString(score); 
-      //for (int i = 0; i < highscorefile.length; i++) {
-        //System.out.println(highscorefile[i]);
-      //}
+     //for (int i = 0; i < highscorefile.length; i++) {
+     //System.out.println(highscorefile[i]);
+     //}
      // System.out.println(highscorefile[3]);
      // record = true;
-    }*/
+     }*/
   }
 }
 
@@ -304,6 +307,11 @@ void mouseCheck() {
 
 // Player movement
 void keyPressed() {
+  if (key == 'r' && gameOver == true ) {
+    gameOver = false;
+    //System.out.println(gameOver);
+    restartGame();
+  }
   if (key == 'w' || keyCode == UP) { // Up
     player.setDirY(-3);
   }
@@ -373,4 +381,9 @@ void gameOver() {
 }
 
 void restartGame() {
+  wave = 0;
+  player = new Player();
+  nexus = new Nexus();
+  score = 0;
+  setup();
 }

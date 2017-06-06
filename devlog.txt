@@ -150,7 +150,7 @@ working on gameover.
 Xing Tao, Marcus :: Constrained enemy spawn to left, top, right
 Marcus :: Added shop bar
 Ish:: Finsihed a crude gameover screen. Working on creating and displaying score 
-and logging scores in a csv file.
+and logging scores in a csv file. Also made the restart feature.
 ==============================================================
 
 yyyy-mm-dd
