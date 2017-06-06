@@ -46,6 +46,9 @@ class Shop {
   }
 
   void display() {
+    fill(color(200,200,200)); // gray
+    rect(-1, height / 1.3, width + 1, height / 1.3);
+
     for (int i = 0; i < button.size(); i++) {
       button.get(i).display();
     }

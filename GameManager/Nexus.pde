@@ -1,7 +1,7 @@
 class Nexus extends Attributes { 
   
   Nexus() {
-    super(width / 2, height / 2, 2000, 2000);
+    super(width / 2, height / 2 + 25, 2000, 2000);
   }
 
   // Health Bar
