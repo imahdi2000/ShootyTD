@@ -12,9 +12,9 @@ class Shop {
   Shop() {
     //price is 3rd item in constructor
     weapons = new ArrayList<Weapon>();
-    Weapon blaster = new Weapon("Blaster", 30, 50, 16, 100);
-    Weapon laser = new Weapon("Laser", 40, 100, 12, 500);
-    Weapon banana = new Weapon("Banana", 50, 150, 8, 1000);
+    Weapon blaster = new Weapon("Blaster", 30, 100, 20, 100);
+    Weapon laser = new Weapon("Laser", 40, 200, 16, 500);
+    Weapon banana = new Weapon("Banana", 40, 350, 12, 1000);
 
     button = new ArrayList<Button>();
 
@@ -32,7 +32,7 @@ class Shop {
     button.add(tra);
 
     // Temp
-    player.addWeapon(new Weapon("default", 30, 0, 20, 100));
+    player.addWeapon(new Weapon("default", 30, 0, 24, 100));
     weapons.add(blaster);
     weapons.add(laser);
     weapons.add(banana);

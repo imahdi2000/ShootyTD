@@ -23,7 +23,7 @@ class Stack <T> {
   }
 
   void pop() {
-    if (!_stack.isEmpty() && frameCount % 3 == 0) { // slight delay so traps dont all go poof
+    if (!_stack.isEmpty() && frameCount % 2 == 0) { // slight delay so traps dont all go poof
       _stack.remove(_stack.size() - 1);
     }
   }

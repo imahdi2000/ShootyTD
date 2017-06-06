@@ -9,8 +9,8 @@ class Turret extends Attributes {
   Turret(PVector newTarget, int newX, int newY, int startingHP, int nDamage) {
     super(newX, newY, startingHP, startingHP);
     damage = nDamage;
-    price = 150;
-    fireRate = (int)random(15,25);
+    price = 200;
+    fireRate = (int)random(20,30);
     range = 250;
     target = newTarget;
   }

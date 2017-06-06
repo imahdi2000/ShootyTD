@@ -80,16 +80,6 @@ void setup() {
     //map.get(wave);
   }
 
-  ////spawned one enemy below for testing, remove later
-  //dummy1 = new Enemy(player);
-  //dummy2 = new Enemy(player);
-  //spawnedEnemies.add(dummy1);
-  //spawnedEnemies.add(dummy2);
-
-  ////spawn a turret for testing
-  //Turret dummyTurret = new Turret(dummy1, width/2, height/2 + 100);
-  //turrets.add(dummyTurret);
-
   //create grid
   for (int x = 0; x <Grid.length; x++) {
     for (int y = 0; y < Grid[0].length; y ++) {
@@ -358,9 +348,9 @@ void mouseClicked() {
 void mousePressed() {
   if (hoverCell != null) {
     if (hoverCell.turretBuildable() && buyingTurret && player.money >= 50) {
-      hoverCell.build(new Turret(new PVector(10000, 10000), hoverCell.x * 30 + 15, hoverCell.y * 30 + 15, (int)random(150, 251), (int)random(10, 31)));
+      hoverCell.build(new Turret(new PVector(10000, 10000), hoverCell.x * 30 + 15, hoverCell.y * 30 + 15, (int)random(100, 201), (int)random(10, 21)));
     } else if (hoverCell.trapBuildable() && buyingTrap && player.money >= 50) {
-      hoverCell.build(new Trap(50, 50, hoverCell.x * 30 + 15, hoverCell.y * 30 + 15));
+      hoverCell.build(new Trap((int)random(75,151), 50, hoverCell.x * 30 + 15, hoverCell.y * 30 + 15));
     }
   }
 }

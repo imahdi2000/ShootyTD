@@ -155,6 +155,11 @@ and logging scores in a CSV file. Also made the restart feature.
 
 yyyy-mm-dd
 --------------------------------------------------------------
+Marcus :: Fixed health bars
+==============================================================
+
+yyyy-mm-dd
+--------------------------------------------------------------
 <Member> :: <Thing member did.>
 <Member> :: <Thing member did.>
 <Member> :: <Thing member did.>

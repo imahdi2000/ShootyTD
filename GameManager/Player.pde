@@ -25,7 +25,8 @@ class Player extends Attributes {
 
   // WASD movement
   void move() {
-    this.add(dir); // Move towards
+    // Move towards
+    this.add(dir);
   }
 
   boolean collidesWithObject(PVector obj) {
@@ -68,8 +69,8 @@ class Player extends Attributes {
       rect(x - 25, y - 25, drawWidth, 6);
     }
   }
-  
-  
+
+
   void display() {
     imageMode(CENTER);
     image(play, x, y);
