@@ -68,7 +68,7 @@ void setup() {
   buyingTurret = false;
   buyingTrap = false;
   wave = 0;
-  record = false;
+  record = true;
   // Enemy Queue
   for (int w = 0; w < 10; w++) {
     Queue<Enemy> enemyQ = new Queue<Enemy>();
@@ -256,12 +256,15 @@ void draw() {
     }
     if (player.currentHP < 1) {
       gameOver = true;
+      record = false;
     }
     if (nexus.isDead()) {
       gameOver = true;
+      record = false;
     }
     if (wave == 3) {
       gameOver = true;
+      record = false;
     }
   } else {
     background(gameover); 
@@ -270,27 +273,27 @@ void draw() {
     text("GAME OVER  :(", 600, 270);
     text("FINAL SCORE", 590, 320);
     text(Integer.toString(score + player.currentHP + nexus.currentHP), 590, 370);
-    text("PRESS R TO PLAY AGAIN",590,500);
+    text("PRESS R TO PLAY AGAIN", 590, 500);
     keyPressed();
     //if(mouseClicked() == true
 
 
-    /*
-    if (record == false) { 
-     for (int i = 0; i < highscorefile.length; i++) {
-     if (score > Integer.parseInt(highscorefile[i])) {
-     highscorefile[i] = Integer.toString(score); 
-     record = true;
-     }
-     }
-     
-     // highscorefile[3] = Integer.toString(score); 
-     //for (int i = 0; i < highscorefile.length; i++) {
-     //System.out.println(highscorefile[i]);
-     //}
-     // System.out.println(highscorefile[3]);
-     // record = true;
-     }*/
+
+    if (!record) { 
+      for (int i = 0; i < highscorefile.length; i++) {
+        if (score > Integer.parseInt(highscorefile[i])) {
+          highscorefile[i] = Integer.toString(score); 
+          record = true;
+        }
+      }
+
+      highscorefile[3] = Integer.toString(score); 
+      for (int i = 0; i < highscorefile.length; i++) {
+        System.out.println(highscorefile[i]);
+      }
+      System.out.println(highscorefile[3]);
+      record = true;
+    }
   }
 }
 
