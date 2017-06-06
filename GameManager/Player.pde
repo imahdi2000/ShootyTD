@@ -54,6 +54,22 @@ class Player extends Attributes {
     return weapons.get(currentWeapon);
   }
 
+  // Health Bar
+  void healthBar() {
+    if (currentHP >= 0) {
+      // Outline
+      stroke(0);
+      fill(255, 0, 0);
+      rect(x - 25, y - 25, 50, 6);
+
+      // Bar
+      float drawWidth = (float(currentHP) / startingHP) * 50;
+      fill(0, 255, 0); // Green
+      rect(x - 25, y - 25, drawWidth, 6);
+    }
+  }
+  
+  
   void display() {
     imageMode(CENTER);
     image(play, x, y);

@@ -3,14 +3,16 @@ abstract class Attributes extends PVector {
   protected PVector dir;
   protected int startingHP;
   protected int currentHP;
+  protected float HPDrawWidth;
   protected boolean isDead;
-
+  
   Attributes() {
     x = width / 3;
     y = height / 3;
     dir = new PVector();
     startingHP = 100;
     currentHP = 100;
+    HPDrawWidth = 50;
     isDead = false;
   }
 
@@ -21,6 +23,7 @@ abstract class Attributes extends PVector {
     startingHP = startHP;
     currentHP = currHP;
     isDead = false;
+    HPDrawWidth = (float(currentHP) / startingHP) * (float(startingHP) / 2);
   }
 
   void takeDamage(int dmg) {
@@ -35,18 +38,17 @@ abstract class Attributes extends PVector {
   }
   
   void healthBar() {
-    if (currentHP >= 0) {
-      float drawWidth = (float(currentHP) / startingHP) * 50;
-      
-      // Outline
+    if (currentHP >= 0) { 
+      float moveBy = (HPDrawWidth / 2);
+      // Red damaged background + Outline
       stroke(0);
       fill(255, 0, 0);
-      rect(x - 25, y - 25, 50, 5);
+      rect(x - moveBy, y - 25, HPDrawWidth, 5);
 
       // Bar
-      
+      float drawWidth = float(currentHP) / startingHP * (float(startingHP) / 2);
       fill(0, 255, 0); // Green
-      rect(x - 25, y - 25, drawWidth, 5);
+      rect(x - moveBy, y - 25, drawWidth, 5);
     }
   }
   
