@@ -10,17 +10,23 @@ ShootyTD
 ------------------------------------------
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+-The inital switch from terminal to processing took some time to adjust to.
+-Learning about PVectors was a mind-boggling experience.
+-Buttons were a hassle to deal with but we eventually got the working.
+-Processing was not writing into the .csv file. Turns out it was only a missing "!". 
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+- You can place turrents and traps on the button interface. 
+- Enemy vibrates sometimes when moving because of how we implemeted PVectors.
+- Button text somtimes disappears.
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Learned how to use processing in general
 - Learned how to use PVectors
 - Learned how to use .csv files in processing
+- Implemented graphics into processing.
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -28,11 +34,12 @@ MID-DEVELOPMENT DESIGN CHANGES
 However, we realized it makes more sense to use PVectors than only x,y coordinates because vectors already have
 x,y components and have additional methods to easily calculate the magnitude of the vector.
 - We decided to only check for the closest enemy when a turret is finding an enemy to target instead of storing enemies in range of the turret in a priority queue because a priority queue is unecessary
-- 
+- We wanted to have an inventory but decided that it was not a priority for us at the moment.
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- plan better
+- We had a few merge conflicts, so we learned early on to plan and delegate work.
+- Make sure you comment your code, trying to understand commented code takes away precious time. 
 - TEAMWORK IS GREAT!
 
 
@@ -123,12 +130,14 @@ Ish :: Worked on buttons + shop setup
 --------------------------------------------------------------
 Marcus :: Added Attributes.pde and refactored
 Xing Tao :: Worked on making grids compatabile with traps and worked on button
+Ish :: Converted shop so it works with the new Button setup.
 ==============================================================
 
 2017-06-01
 --------------------------------------------------------------
 Marcus :: Fixed enemy targeting and updated UML and flow
 Xing Tao :: Worked on making traps and worked on button, revised plan
+
 ==============================================================
 
 2017-06-02
@@ -142,7 +151,7 @@ Marcus :: Added enemy queues and spawning based on wave,
 fixed enemy attacking distance, and attempted player weapon balancing 
 ==============================================================
 
-2017-06-03
+2017-06-04
 --------------------------------------------------------------
 Xing Tao :: Worked on making buttons run properly and added text for buttons,
 fixed funtionality of traps
@@ -163,12 +172,7 @@ and logging scores in a CSV file. Also made the restart feature.
 --------------------------------------------------------------
 Marcus :: Fixed health bars
 Xing Tao :: Fixed pushing to csv and fixed a bug regarding shop
-Also added movement constraints
+Also added movement constraints.
+Ish:: Updated background graphics, added menu screen, displayed highscores.
 ==============================================================
 
-yyyy-mm-dd
---------------------------------------------------------------
-<Member> :: <Thing member did.>
-<Member> :: <Thing member did.>
-<Member> :: <Thing member did.>
-==============================================================

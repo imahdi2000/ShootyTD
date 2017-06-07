@@ -13,6 +13,7 @@ PImage gameover;
 Player player;
 Nexus nexus;
 Shop shop;
+boolean menu;
 
 ArrayList<Bullet> bullets;
 ArrayList<Enemy> spawnedEnemies;
@@ -68,6 +69,7 @@ void setup() {
   buyingTurret = false;
   buyingTrap = false;
   wave = 0;
+  menu = true;
   record = true;
   // Enemy Queue
   for (int w = 0; w < 10; w++) {
@@ -94,7 +96,24 @@ void draw() {
   //background(map.size());
 
   //mkaes sure i don't get nullpointer inspection due to the amount of elemnets in map
-  if (gameOver == false) {
+  if (menu) {
+    background(255);
+    textSize(32);
+    textAlign(CENTER);
+    fill(55);
+    text("WELCOME TO SHOOTYTD!", 590, 40);
+    text("INTRUCTIONS:", 120, 100);
+    text("1. Use the mouse to aim and shoot the enemy.", 590, 140);
+    text("2. Move around using wasd keys or the arrow keys.", 590, 190);
+    text("3. Protect your nexus from being destroyed and collect gold.", 590, 240);
+    text("4. Use the gold you collected to buy weapons, traps and turrets.", 590, 290);
+    text("5. To place a trap or turret, first click the corresponding button once.", 590, 340);
+    text("Then hover over the area you wish to place the turret/trap. If the area", 590, 390);
+    text("you are hovering over is red, you cannot place a turret/trap there.", 590, 440);
+    text("6. Enjoy the game!", 590, 490);
+    text("PRESS SPACEBAR TO START THE GAME",590,550);
+    keyPressed();
+  } else if (gameOver == false) {
     if ((wave < map.size())) { 
       background(map.get(wave));
     } else {
@@ -260,10 +279,24 @@ void draw() {
     background(gameover); 
     textSize(32);
     textAlign(CENTER);
-    text("GAME OVER  :(", 600, 270);
-    text("FINAL SCORE", 590, 320);
-    text(Integer.toString(score), 590, 370);
-    text("PRESS R TO PLAY AGAIN", 590, 500);
+    text("GAME OVER  :(", 600, 70);
+    text("FINAL SCORE", 590, 120);
+    text(Integer.toString(score), 590, 170);
+    text("HIGHSCORES", 590, 210);
+    /*  text(highscorefile[0], 590, 240);
+     text(highscorefile[1], 590, 280);
+     text(highscorefile[2], 590, 320);
+     text(highscorefile[3], 590, 360);
+     text(highscorefile[4], 590, 400);
+     text(highscorefile[5], 590, 440);
+     text(highscorefile[6], 590, 480);
+     text(highscorefile[7], 590, 520);
+     text(highscorefile[8], 590, 560);
+     text(highscorefile[9], 590, 600);*/
+    for (int i = 0; i< highscorefile.length; i ++) {
+      text(highscorefile[i], 590, (240 + (40*i)));
+    }
+    text("PRESS R TO PLAY AGAIN", 590, 660);
     keyPressed();
     //if(mouseClicked() == true
 
@@ -273,7 +306,7 @@ void draw() {
       for (int i = 0; i < highscorefile.length; i++) {
         if (score > Integer.parseInt(highscorefile[i])) {
           for (int x = highscorefile.length - 1; x > i; x--) {
-              highscorefile[x] = "" + highscorefile[x - 1]; //keep old numbers
+            highscorefile[x] = "" + highscorefile[x - 1]; //keep old numbers
           }
           highscorefile[i] = Integer.toString(score); 
           record = true;
@@ -303,6 +336,9 @@ void keyPressed() {
     gameOver = false;
     //System.out.println(gameOver);
     restartGame();
+  }
+  if (key == ' ' && menu) {
+    menu = false;
   }
   if (key == 'w' || keyCode == UP) { // Up
     player.setDirY(-3);
