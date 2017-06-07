@@ -58,6 +58,7 @@ void setup() {
   //print(s + ", ");
   //}
 
+  noCursor(); 
   player = new Player();
   nexus = new Nexus();
   bullets = new ArrayList<Bullet>();
@@ -97,11 +98,11 @@ void draw() {
 
   //mkaes sure i don't get nullpointer inspection due to the amount of elemnets in map
   if (menu) {
-    background(color(160,204,255));
+    background(color(160, 204, 255));
     textSize(32);
     textAlign(CENTER);
     fill(55);
-    text("WELCOME TO SHOOTYTD!", width / 2 , 40);
+    text("WELCOME TO SHOOTYTD!", width / 2, 40);
     text("INTRUCTIONS:", width / 2, 100);
     text("1. Use the mouse to aim and shoot the enemy.", width / 2, 160);
     text("2. Move around using WASD or the arrow keys.", width / 2, 210);
@@ -111,7 +112,7 @@ void draw() {
     text("Then hover over the area you wish to place the turret/trap. If the area", width / 2, 410);
     text("you are hovering over is red, you cannot place a turret/trap there.", width / 2, 460);
     text("6. Enjoy the game!", width / 2, 510);
-    text("PRESS SPACEBAR TO START THE GAME",width / 2,650);
+    text("PRESS SPACEBAR TO START THE GAME", width / 2, 650);
     keyPressed();
   } else if (gameOver == false) {
     if ((wave < map.size())) { 
@@ -136,7 +137,7 @@ void draw() {
     //Show money
     textSize(32);
     textAlign(CENTER);
-    text("$" + player.money, width / 1.1, height / 1.1); 
+    text("Gold: $" + player.money, width / 1.1, height / 1.1); 
     text("Wave " + (wave + 1), width / 2, height / 20);
     text("Score: " + score, 1050, 40);
     // Mouse vector
@@ -206,7 +207,7 @@ void draw() {
       // Check for gold collision
       if (player.collidesWithObject(goldList.get(g))) { //if you touch the gold
         //System.out.println(player.money);
-        player.money = player.money + goldList.get(g).amount; //add it to ur money
+        player.money += goldList.get(g).amount; //add it to ur money
         score += goldList.get(g).amount;
         goldList.remove(g); //remove it from the list
         //System.out.println(player.money);
@@ -261,7 +262,7 @@ void draw() {
     }
 
     //check mouse for hovercell
-    if (buyingTurret || buyingTrap) {
+    if ((buyingTurret && player.money >= 200) || (buyingTrap && player.money >= 40)) {
       mouseCheck();
     }
     if (player.currentHP < 1) {
@@ -280,10 +281,10 @@ void draw() {
     background(gameover); 
     textSize(32);
     textAlign(CENTER);
-    text("GAME OVER  :(", 600, 70);
+    text("GAME OVER  :)", 600, 70);
     text("FINAL SCORE", 590, 120);
-    text(Integer.toString(score), 590, 170);
-    text("HIGHSCORES", 590, 210);
+    text(Integer.toString(score), 590, 160);
+    text("HIGHSCORES", 590, 200);
     /*  text(highscorefile[0], 590, 240);
      text(highscorefile[1], 590, 280);
      text(highscorefile[2], 590, 320);

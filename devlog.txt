@@ -39,7 +39,7 @@ x,y components and have additional methods to easily calculate the magnitude of 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - We had a few merge conflicts, so we learned early on to plan and delegate work.
-- Make sure you comment your code, trying to understand commented code takes away precious time. 
+- Make sure you comment your code, trying to understand uncommented code takes away precious time. 
 - TEAMWORK IS GREAT!
 
 

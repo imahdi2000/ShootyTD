@@ -44,9 +44,11 @@ class Cell {
   void outline() {
     noFill();
     if (turretBuildable() && buyingTurret || trapBuildable() && buyingTrap) {
-      stroke(#00FF00);
+      stroke(#33cc33);
+      fill(#00FF00);
     } else {
-      stroke(#FF0000);
+      stroke(#cc3333);
+      fill(#FF0000);
     }
     rect(x * cellSize, y * cellSize, cellSize, cellSize);
   }

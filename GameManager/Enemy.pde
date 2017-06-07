@@ -22,7 +22,7 @@ class Enemy extends Attributes {
     }
     startingHP = nStartingHP;
     target = newTarget;
-    speed = random(1, 2.3);
+    speed = random(1, 2.4);
     damage = nDamage;
     goldAmount = (int)random(30,51);
     inRangeNexus = false;
