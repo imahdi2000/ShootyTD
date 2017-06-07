@@ -35,8 +35,9 @@ class Button {
   void pressed() {
     // If mouse is hovering over CORRESPONDING button
     if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
-      if (hasweapon) {
+      if (hasweapon && afford(weapon)) {
         hasweapon = false;
+        System.out.println(hasweapon);
       } else if (hasTurret) {//turret button
         buyingTurret = true;
       } else if (hasTrap) {//trap button
@@ -51,8 +52,9 @@ class Button {
       if (hasweapon == true && afford(weapon)) { // And weapon is not in player.inv
         player.decreaseMoney(weapon.getPrice());
         player.addWeapon(weapon);
-        System.out.println("Buy " + weapon.getName());
+        //System.out.println("Buy " + weapon.getName());
         player.setCurrentWeapon(1);
+        hasweapon = false;
       }
     }
   }

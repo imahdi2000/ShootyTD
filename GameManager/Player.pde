@@ -26,7 +26,13 @@ class Player extends Attributes {
   // WASD movement
   void move() {
     // Move towards
-    this.add(dir);
+    if (this.x < 15 && dir.x < 0) { //constrain movement
+    } else if (this.y < 15 && dir.y < 0) { //constrain movement
+    } else if (this.x > width - 15 && dir.x > 0) { //constrain movement
+    } else if (this.y > height / 1.3 - 15 && dir.y > 0) { //constrain movement
+    } else { //movement
+      this.add(dir);
+    }
   }
 
   boolean collidesWithObject(PVector obj) {

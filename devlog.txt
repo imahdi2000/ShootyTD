@@ -153,9 +153,11 @@ Ish:: Finished a crude gameover screen. Working on creating and displaying score
 and logging scores in a CSV file. Also made the restart feature.
 ==============================================================
 
-yyyy-mm-dd
+2017-06-06
 --------------------------------------------------------------
 Marcus :: Fixed health bars
+Xing Tao :: Fixed pushing to csv and fixed a bug regarding shop
+Also added movement constraints
 ==============================================================
 
 yyyy-mm-dd
