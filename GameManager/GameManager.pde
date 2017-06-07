@@ -262,26 +262,25 @@ void draw() {
     textAlign(CENTER);
     text("GAME OVER  :(", 600, 270);
     text("FINAL SCORE", 590, 320);
-    text(Integer.toString(score + player.currentHP + nexus.currentHP), 590, 370);
+    text(Integer.toString(score), 590, 370);
     text("PRESS R TO PLAY AGAIN", 590, 500);
     keyPressed();
     //if(mouseClicked() == true
 
 
 
-    if (!record) { 
+    if (!record) { //recording highscore
       for (int i = 0; i < highscorefile.length; i++) {
         if (score > Integer.parseInt(highscorefile[i])) {
+          for (int x = highscorefile.length - 1; x > i; x--) {
+              highscorefile[x] = "" + highscorefile[x - 1]; //keep old numbers
+          }
           highscorefile[i] = Integer.toString(score); 
           record = true;
+          break;
         }
       }
-
-      highscorefile[3] = Integer.toString(score); 
-      for (int i = 0; i < highscorefile.length; i++) {
-        System.out.println(highscorefile[i]);
-      }
-      System.out.println(highscorefile[3]);
+      saveStrings("highscore.csv", highscorefile);
       record = true;
     }
   }
@@ -350,7 +349,7 @@ void mousePressed() {
     if (hoverCell.turretBuildable() && buyingTurret && player.money >= 50) {
       hoverCell.build(new Turret(new PVector(10000, 10000), hoverCell.x * 30 + 15, hoverCell.y * 30 + 15, (int)random(100, 201), (int)random(10, 21)));
     } else if (hoverCell.trapBuildable() && buyingTrap && player.money >= 50) {
-      hoverCell.build(new Trap((int)random(75,151), 50, hoverCell.x * 30 + 15, hoverCell.y * 30 + 15));
+      hoverCell.build(new Trap((int)random(75, 151), 50, hoverCell.x * 30 + 15, hoverCell.y * 30 + 15));
     }
   }
 }
