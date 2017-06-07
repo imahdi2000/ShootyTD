@@ -4,15 +4,13 @@ class Player extends Attributes {
   int money;
   ArrayList<Weapon> weapons;
   int currentWeapon;
-  ArrayList<Object> inventory;
 
   Player() {
-    super(600, 300, 250, 250);
+    super(600, 300, 300, 300);
     speed = 3;
     money = 0;
     weapons = new ArrayList<Weapon>();
     currentWeapon = 0;
-    inventory = new ArrayList<Object>();
   }
 
   void setDirX(float x) {

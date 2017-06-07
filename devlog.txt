@@ -170,7 +170,7 @@ and logging scores in a CSV file. Also made the restart feature.
 
 2017-06-06
 --------------------------------------------------------------
-Marcus :: Fixed health bars
+Marcus :: Fixed health bars, bug fixes, balancing, updated flow and uml
 Xing Tao :: Fixed pushing to csv and fixed a bug regarding shop
 Also added movement constraints.
 Ish:: Updated background graphics, added menu screen, displayed highscores.

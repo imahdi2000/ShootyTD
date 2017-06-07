@@ -18,7 +18,7 @@ class Button {
     w = w1;
     h = h1;
     weapon = null;
-    c = color(55, 55, 255);
+    c = color(0, 180, 255);
   }
 
   Button(float x1, float y1, float w1, float h1, int nPrice, Weapon g) {

@@ -97,21 +97,21 @@ void draw() {
 
   //mkaes sure i don't get nullpointer inspection due to the amount of elemnets in map
   if (menu) {
-    background(255);
+    background(color(160,204,255));
     textSize(32);
     textAlign(CENTER);
     fill(55);
-    text("WELCOME TO SHOOTYTD!", 590, 40);
-    text("INTRUCTIONS:", 120, 100);
-    text("1. Use the mouse to aim and shoot the enemy.", 590, 140);
-    text("2. Move around using wasd keys or the arrow keys.", 590, 190);
-    text("3. Protect your nexus from being destroyed and collect gold.", 590, 240);
-    text("4. Use the gold you collected to buy weapons, traps and turrets.", 590, 290);
-    text("5. To place a trap or turret, first click the corresponding button once.", 590, 340);
-    text("Then hover over the area you wish to place the turret/trap. If the area", 590, 390);
-    text("you are hovering over is red, you cannot place a turret/trap there.", 590, 440);
-    text("6. Enjoy the game!", 590, 490);
-    text("PRESS SPACEBAR TO START THE GAME",590,550);
+    text("WELCOME TO SHOOTYTD!", width / 2 , 40);
+    text("INTRUCTIONS:", width / 2, 100);
+    text("1. Use the mouse to aim and shoot the enemy.", width / 2, 160);
+    text("2. Move around using WASD or the arrow keys.", width / 2, 210);
+    text("3. Protect your nexus from being destroyed and collect gold.", width / 2, 260);
+    text("4. Use the gold you collected to buy weapons, traps and turrets.", width / 2, 310);
+    text("5. To place a trap or turret, first click the corresponding button once.", width / 2, 360);
+    text("Then hover over the area you wish to place the turret/trap. If the area", width / 2, 410);
+    text("you are hovering over is red, you cannot place a turret/trap there.", width / 2, 460);
+    text("6. Enjoy the game!", width / 2, 510);
+    text("PRESS SPACEBAR TO START THE GAME",width / 2,650);
     keyPressed();
   } else if (gameOver == false) {
     if ((wave < map.size())) { 
