@@ -18,7 +18,9 @@ UNRESOLVED ISSUES
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Learned how to use processing in general
 - Learned how to use PVectors
+- Learned how to use .csv files in processing
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -26,9 +28,13 @@ MID-DEVELOPMENT DESIGN CHANGES
 However, we realized it makes more sense to use PVectors than only x,y coordinates because vectors already have
 x,y components and have additional methods to easily calculate the magnitude of the vector.
 - We decided to only check for the closest enemy when a turret is finding an enemy to target instead of storing enemies in range of the turret in a priority queue because a priority queue is unecessary
+- 
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- plan better
+- TEAMWORK IS GREAT!
+
 
  ______   ______   __   __   __       ______   _______     
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
