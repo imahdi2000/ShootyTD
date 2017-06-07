@@ -180,6 +180,7 @@ void draw() {
       if (en.isDead) {
         goldList.add(new Gold(en, en.goldAmount));//add a gold when he dies
         spawnedEnemies.remove(en);
+        score += 25;
       }
     }
 
@@ -371,21 +372,21 @@ void mouseClicked() {
   if (shop.button.get(3).triggered) {
     buyingTurret = true;
     shop.button.get(3).triggered = false;
-    System.out.println("Triggered");
+    //System.out.println("Triggered");
   }
   if (shop.button.get(4).triggered) {
     buyingTrap = true;
     shop.button.get(3).triggered = false;
-    System.out.println("Triggered trap");
+    //System.out.println("Triggered trap");
   }
 }
 
 void mousePressed() {
   if (hoverCell != null) {
-    if (hoverCell.turretBuildable() && buyingTurret && player.money >= 50) {
+    if (hoverCell.turretBuildable() && buyingTurret && player.money >= 200) {
       hoverCell.build(new Turret(new PVector(10000, 10000), hoverCell.x * 30 + 15, hoverCell.y * 30 + 15, (int)random(100, 201), (int)random(10, 21)));
-    } else if (hoverCell.trapBuildable() && buyingTrap && player.money >= 50) {
-      hoverCell.build(new Trap((int)random(75, 151), 50, hoverCell.x * 30 + 15, hoverCell.y * 30 + 15));
+    } else if (hoverCell.trapBuildable() && buyingTrap && player.money >= 40) {
+      hoverCell.build(new Trap((int)random(75, 151), 40, hoverCell.x * 30 + 15, hoverCell.y * 30 + 15));
     }
   }
 }
@@ -400,12 +401,6 @@ void spawnEnemies() {
     wave++;
     System.out.println("Wave " + (wave + 1));
   }
-}
-
-void saveHighscore() {
-}
-
-void gameOver() {
 }
 
 void restartGame() {

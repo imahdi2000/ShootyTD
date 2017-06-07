@@ -24,7 +24,7 @@ class Enemy extends Attributes {
     target = newTarget;
     speed = random(1, 2.4);
     damage = nDamage;
-    goldAmount = 50;
+    goldAmount = (int)random(25,51);
     inRangeNexus = false;
     inRangeTurret = false;
   }

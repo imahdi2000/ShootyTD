@@ -37,7 +37,6 @@ class Button {
     if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
       if (hasweapon && afford(weapon)) {
         hasweapon = false;
-        System.out.println(hasweapon);
       } else if (hasTurret) {//turret button
         buyingTurret = true;
       } else if (hasTrap) {//trap button
@@ -84,9 +83,9 @@ class Button {
       text("FireRate:" + weapon.fireRate, x + 15, y + 40);
       text("Range:" + weapon.range, x + 15, y + 50);
     } else if (hasTrap) {
-      text("Trap: $50", x + 15, y + 20);
+      text("Trap: $40", x + 15, y + 20);
     } else if (hasTurret) {
-      text("Turret: $150", x + 15, y + 20);
+      text("Turret: $200", x + 15, y + 20);
     }
     c = oldC;
   }
